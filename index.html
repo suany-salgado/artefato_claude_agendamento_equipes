@@ -7,8 +7,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 <style>
 /* Layout: calendário do mês à esquerda; ao clicar numa data, o painel da direita mostra as informações do dia (e, na área da coordenação, o formulário para incluir) */
-/* Fonte Intro (comercial, Fontfabric) removida desta cópia pública; a versão no claude.ai a mantém. */
-/* Fonte Intro (comercial, Fontfabric) removida desta cópia pública; a versão no claude.ai a mantém. */
+/* Fonte comercial da identidade visual removida desta cópia pública. */
+/* Fonte comercial da identidade visual removida desta cópia pública. */
 /* Paleta: azul-marinho #171C66, azul-céu #5883D0, verde #00BE6B, azul #1D40A6, turquesa #38ABB2 */
 :root{
   --marinho:#171C66; --ceu:#5883D0; --verde:#00BE6B; --azul-escuro:#1D40A6; --turquesa:#38ABB2;
@@ -482,7 +482,7 @@ a.btn{text-decoration:none;display:inline-flex;align-items:center}
           </div>
           <div class="field">
             <label for="pLocal">Local <span class="hint">(opcional)</span></label>
-            <input id="pLocal" type="text" maxlength="140" placeholder="Ex.: Rio Centro – Barra da Tijuca/RJ">
+            <input id="pLocal" type="text" maxlength="140" placeholder="Ex.: Centro de Convenções">
           </div>
           <div class="row">
             <div class="field">
@@ -611,7 +611,7 @@ a.btn{text-decoration:none;display:inline-flex;align-items:center}
       <p>Página interativa (artefato do claude.ai) onde a equipe de Formação Profissional da organização registra reuniões, a programação mensal e anual dos programas e as tarefas de cada colaborador. Funciona no navegador do computador, com login no claude.ai, para pessoas da organização. A conta responsável é a conta do setor.</p>
 
       <h3>Pasta do projeto</h3>
-      <p>Arquivos originais, relatórios mensais e materiais da agenda ficam no SharePoint: <a href="#" target="_blank" rel="noopener">Documentos Compartilhados › Agenda - Formação Profissional</a>. A cópia em PDF desta documentação também fica nessa pasta: use “📄 Baixar em PDF” no fim desta janela e salve o arquivo lá.</p>
+      <p>Arquivos originais, relatórios mensais e materiais da agenda ficam na pasta compartilhada da equipe: <a href="#" target="_blank" rel="noopener">Agenda da equipe</a>. A cópia em PDF desta documentação também fica nessa pasta: use “📄 Baixar em PDF” no fim desta janela e salve o arquivo lá.</p>
 
       <h3>Funcionalidades</h3>
       <table>
@@ -677,7 +677,7 @@ a.btn{text-decoration:none;display:inline-flex;align-items:center}
       <ul>
         <li>Alterações são pedidas ao Claude com a conta do setor, informando o link da agenda; a nova versão sai no mesmo endereço, sem perder dados.</li>
         <li>Para incluir ou trocar colaboradores, peça ao Claude (a lista da Agenda fica no formulário e na constante <code>COLABS</code>; a da aba Tarefas, na constante <code>TCOLABS</code>).</li>
-        <li>Não há lixeira: salve mensalmente o relatório do mês em CSV na <a href="#" target="_blank" rel="noopener">pasta do projeto no SharePoint</a>.</li>
+        <li>Não há lixeira: salve mensalmente o relatório do mês em CSV na <a href="#" target="_blank" rel="noopener">pasta compartilhada da equipe</a>.</li>
         <li>O histórico de versões do artefato restaura a página, não os dados.</li>
         <li>Se aparecer “A agenda atingiu o limite de registros”, apague informações antigas depois de salvá-las em CSV.</li>
         <li>Registros antigos sem colaborador aparecem sem o nome; ao editar um deles, é preciso escolher o colaborador para salvar.</li>
@@ -693,7 +693,7 @@ a.btn{text-decoration:none;display:inline-flex;align-items:center}
           <tr><td>Endereço</td><td>Endereço interno no claude.ai (não divulgado nesta cópia)</td></tr>
           <tr><td>Plataforma</td><td>Artefato publicado no claude.ai (contrato de execução 0.2.96)</td></tr>
           <tr><td>Acesso</td><td>Pessoas da organização com login no claude.ai</td></tr>
-          <tr><td>Conta responsável</td><td>Conta do setor (Comunicação / Formação)</td></tr>
+          <tr><td>Conta responsável</td><td>Conta do setor</td></tr>
           <tr><td>Versão em vigor</td><td>55, de 24/11/2026</td></tr>
           <tr><td>Requisitos</td><td>Navegador do computador com login no claude.ai; fora do Claude a página não carrega os dados</td></tr>
         </tbody>
@@ -721,7 +721,7 @@ a.btn{text-decoration:none;display:inline-flex;align-items:center}
       </table>
       <p class="meta">* Obrigatório. Colaboradores da Agenda: Colaborador 1, Coordenador, Colaborador 2 e Colaborador 3; na aba Tarefas também Colaborador 4, Colaborador 5 e o Backlog. O nome aparece no item do dia, no relatório (“Cadastrado por”) e na coluna “Colaborador” do CSV.</p>
       <h3>Arquitetura</h3>
-      <p>A agenda é um único arquivo HTML (página, estilos e JavaScript juntos) publicado como artefato. Os dados não ficam no arquivo: ficam no banco compartilhado do artefato, lido e gravado em tempo real por todos que têm a página aberta. A página e o chat do Claude gravam no mesmo banco; os relatórios e esta documentação são gerados a partir da página e salvos manualmente no SharePoint.</p>
+      <p>A agenda é um único arquivo HTML (página, estilos e JavaScript juntos) publicado como artefato. Os dados não ficam no arquivo: ficam no banco compartilhado do artefato, lido e gravado em tempo real por todos que têm a página aberta. A página e o chat do Claude gravam no mesmo banco; os relatórios e esta documentação são gerados a partir da página e salvos manualmente na pasta compartilhada da equipe.</p>
       <h3>Capacidades declaradas no artefato</h3>
 <table class="tec">
         <thead><tr><th>Capacidade</th><th>Uso</th></tr></thead>
@@ -812,7 +812,7 @@ a.btn{text-decoration:none;display:inline-flex;align-items:center}
         <li><b>Atualizar esta documentação:</b> a cada mudança, peça ao Claude para atualizar as duas partes e baixe o PDF de novo para a pasta do projeto.</li>
         <li><b>Restaurar uma versão:</b> pelo histórico de versões do artefato. Isso volta a página, não os dados do banco.</li>
         <li><b>Registro apagado por engano:</b> não há lixeira. Precisa ser cadastrado de novo; os relatórios em CSV salvos na pasta servem de cópia.</li>
-        <li><b>Cópia de segurança:</b> baixar mensalmente o relatório do mês em CSV e salvar na pasta do SharePoint.</li>
+        <li><b>Cópia de segurança:</b> baixar mensalmente o relatório do mês em CSV e salvar na pasta compartilhada da equipe.</li>
         <li><b>Limite de armazenamento:</b> se aparecer “A agenda atingiu o limite de registros”, apague informações antigas depois de salvá-las em CSV.</li>
       </ul>
     </div>

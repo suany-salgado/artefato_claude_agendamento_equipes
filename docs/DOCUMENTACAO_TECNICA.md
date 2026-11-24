@@ -13,7 +13,7 @@ A Agenda da Equipe é uma página web interativa (artefato do claude.ai) onde a 
 | Endereço | Interno no claude.ai (não divulgado nesta cópia) |
 | Plataforma | Artefato publicado no claude.ai (contrato de execução 0.2.96) |
 | Acesso | Pessoas da organização com login no claude.ai |
-| Conta responsável | Conta do setor (Comunicação / Formação) |
+| Conta responsável | Conta do setor |
 | Versão em vigor | 52, de 24/11/2026 |
 | Requisitos | Navegador do computador com login no claude.ai; fora do Claude a página não carrega os dados |
 
@@ -47,10 +47,10 @@ A agenda é um único arquivo HTML (página, estilos e JavaScript juntos) public
 Navegador (index.html) ──lê/grava──► Banco compartilhado do artefato (db)
 Chat do Claude ─────────lê/grava──►        │
                                            ▼
-                           Relatórios (CSV / HTML / PDF) ──► salvos manualmente no SharePoint
+                           Relatórios (CSV / HTML / PDF) ──► salvos manualmente na pasta compartilhada da equipe
 ```
 
-A página e o chat do Claude gravam no mesmo banco; os relatórios são gerados a partir dele e salvos manualmente no SharePoint.
+A página e o chat do Claude gravam no mesmo banco; os relatórios são gerados a partir dele e salvos manualmente na pasta compartilhada da equipe.
 
 **Capacidades declaradas no artefato**
 
@@ -141,5 +141,5 @@ Alterações na página são feitas pedindo ao Claude, com a conta do setor, inf
 - **Registros antigos sem colaborador:** aparecem sem o nome. Ao editar um deles, é preciso escolher o colaborador para salvar.
 - **Restaurar uma versão:** pelo histórico de versões do artefato. Isso volta a página, não os dados do banco.
 - **Registro apagado por engano:** não há lixeira. Precisa ser cadastrado de novo; os relatórios em CSV salvos nesta pasta servem de cópia.
-- **Cópia de segurança:** baixar mensalmente o relatório do mês em CSV e salvar nesta pasta do SharePoint.
+- **Cópia de segurança:** baixar mensalmente o relatório do mês em CSV e salvar na pasta compartilhada da equipe.
 - **Limite de armazenamento:** se aparecer "A agenda atingiu o limite de registros", apague informações antigas depois de salvá-las em CSV.

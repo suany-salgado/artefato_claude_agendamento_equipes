@@ -133,8 +133,8 @@ Este repositório serve como **cópia de segurança e histórico do código**. E
 
 - **Nomes fictícios:** nesta cópia pública, os nomes da equipe foram trocados por cargos genéricos: Coordenador e Colaborador 1 a 5. A versão no claude.ai usa os nomes reais. Ao atualizar o `index.html` a partir do claude.ai, faça a troca de novo antes do commit.
 - **Não registre dados sensíveis na agenda.** Tudo nela fica visível para quem tem acesso.
-- **Cópia dos dados:** os registros (reuniões, tarefas) não estão neste repositório. Faça backup mensal pelo relatório em CSV e salve no SharePoint.
-- **Fonte dos títulos:** a versão publicada no claude.ai usa a fonte **Intro** (© Fontfabric), que é comercial e faz parte da identidade visual da organização. Como este repositório é público, a Intro foi retirada desta cópia e os títulos usam a **Inter** (fonte livre, do Google Fonts). Ao atualizar o `index.html` com uma versão nova do claude.ai, remova de novo os blocos `@font-face` da Intro antes do commit.
+- **Cópia dos dados:** os registros (reuniões, tarefas) não estão neste repositório. Faça backup mensal pelo relatório em CSV e salve na pasta compartilhada da equipe.
+- **Fonte dos títulos:** a versão publicada no claude.ai usa uma fonte comercial da identidade visual. Como este repositório é público, ela foi retirada desta cópia e os títulos usam a **Inter** (fonte livre, do Google Fonts). Ao atualizar o `index.html` com uma versão nova do claude.ai, remova de novo os blocos `@font-face` dessa fonte antes do commit.
 
 ## Responsáveis
 
