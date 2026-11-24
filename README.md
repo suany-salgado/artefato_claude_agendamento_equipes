@@ -1,4 +1,4 @@
-# Agenda da Equipe – Formação Profissional
+# Agenda da Equipe 
 
 Página web de agendamento e acompanhamento da equipe de Formação Profissional de uma organização. Ela reúne num só lugar as reuniões, a programação anual dos programas e as tarefas de cada colaborador.
 
