@@ -70,6 +70,7 @@ artefato_agendamento_equipe/
 ├── .gitignore                    Arquivos que não devem ir para o GitHub
 └── docs/
     ├── DOCUMENTACAO_TECNICA.md   Funcionalidades, dados, permissões, histórico e manutenção
+    ├── COMO_INCLUIR_NO_CLAUDE.md Passo a passo para usar a agenda no seu claude.ai
     └── imagens/                  Prints das abas, com dados fictícios
 ```
 
