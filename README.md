@@ -4,6 +4,7 @@ Página web de agendamento e acompanhamento da equipe de Formação Profissional
 
 - **Página em uso:** publicada no claude.ai, com acesso restrito à equipe (o endereço não é divulgado neste repositório)
 - **Documentação técnica completa:** [docs/DOCUMENTACAO_TECNICA.md](docs/DOCUMENTACAO_TECNICA.md)
+- **Como colocar no seu claude.ai (passo a passo):** [docs/COMO_INCLUIR_NO_CLAUDE.md](docs/COMO_INCLUIR_NO_CLAUDE.md)
 - **Versão do código neste repositório:** 52, de 24/11/2026
 
 ## O que a agenda faz
@@ -45,67 +46,20 @@ index.html  ──lê/grava──►  Banco compartilhado do artefato (claude.ai
 
 ## Como usar esta agenda no seu claude.ai
 
-Sim, qualquer pessoa pode criar a própria agenda a partir deste repositório. Você não precisa saber programar: o Claude faz a parte técnica.
+Qualquer pessoa pode criar a própria agenda a partir deste repositório, **sem saber programar**: o Claude faz a parte técnica.
 
-**Antes de começar, saiba que:**
+📘 **Guia completo, passo a passo e com explicações para leigos:** [docs/COMO_INCLUIR_NO_CLAUDE.md](docs/COMO_INCLUIR_NO_CLAUDE.md)
 
-- A sua agenda será **nova e vazia**. As reuniões e tarefas da nossa equipe não estão aqui e não vão junto.
-- Ela **não fica ligada** à nossa agenda. O que você fizer na sua não muda a nossa, e vice-versa.
-- Você precisa de uma conta no [claude.ai](https://claude.ai) que permita **criar e compartilhar artefatos** (as páginas que o Claude publica). Para a equipe toda usar, o ideal é uma conta de organização (planos Team ou Enterprise).
+Resumo do caminho:
 
-### Passo a passo
+1. **Baixe** o arquivo [index.html](index.html) (botão *Download raw file*).
+2. **Abra uma conversa nova** no [claude.ai](https://claude.ai) e anexe o arquivo.
+3. **Envie a mensagem pronta** do guia, com os nomes da sua equipe e da sua área.
+4. **Abra a agenda** pelo link que o Claude mandar e faça um teste.
+5. **Compartilhe** com a equipe, dando permissão de edição só a quem vai cuidar da agenda.
+6. **Guarde o link** e a conversa para pedir mudanças depois.
 
-**1. Baixe o arquivo da página**
-
-Aqui no GitHub, clique em [index.html](index.html) e depois no botão **Download raw file** (ícone de seta para baixo, no canto direito acima do código). O arquivo vai para a sua pasta Downloads.
-
-**2. Abra uma conversa nova no claude.ai**
-
-Entre no claude.ai e clique em **Nova conversa**. Anexe o `index.html` com o clipe (📎) ou arrastando o arquivo para a caixa de mensagem.
-
-**3. Copie, ajuste e envie a mensagem abaixo**
-
-Troque o que está entre colchetes pelos nomes da sua equipe. Se tiver menos ou mais pessoas, é só listar quem tiver.
-
-```
-Publique este arquivo index.html como um artefato, sem mudar o layout nem
-as funções. A página usa o banco compartilhado do artefato (coleções
-avisos, tarefas e notas) e a função de downloads. Ative as duas.
-
-Antes de publicar, troque os nomes da equipe (nas listas COLABS e TCOLABS
-e nas opções do formulário):
-- Coordenador → [nome da coordenação]
-- Colaborador 1 → [nome]
-- Colaborador 2 → [nome]
-- Colaborador 3 → [nome]
-- Colaborador 4 → [nome]
-- Colaborador 5 → [nome]
-
-Troque também "Formação Profissional" pelo nome da minha área: [nome da área].
-```
-
-**4. Abra a agenda e faça um teste**
-
-O Claude responde com o link da página publicada. Abra o link, inclua uma reunião de teste e confira se ela aparece no calendário. Depois apague o teste.
-
-**5. Compartilhe com a equipe**
-
-Na página do artefato, use o botão **Compartilhar** e escolha quem pode **ver** e quem pode **editar**. Só dê permissão de edição a quem vai incluir ou alterar compromissos: é essa permissão que protege os dados, não a página.
-
-**6. Guarde o link**
-
-Salve o endereço da agenda num lugar que a equipe use (favoritos, canal da equipe). Para mudar algo depois, abra uma conversa no claude.ai, cole o link e peça a alteração. O Claude publica a nova versão no mesmo endereço, sem perder os dados.
-
-### Se algo não funcionar
-
-| O que acontece | O que fazer |
-| --- | --- |
-| A página abre, mas não salva nada | O banco compartilhado não foi ativado. Peça ao Claude: "ative o banco compartilhado (db) neste artefato". Se continuar, o recurso pode não estar liberado no seu plano |
-| O botão de relatório não baixa o arquivo | Peça ao Claude: "ative a função de downloads neste artefato" |
-| Apareceu "Colaborador 1" em vez do nome da pessoa | Peça ao Claude: "troque o nome Colaborador 1 por [nome] em toda a página" |
-| Abri o `index.html` direto no computador e está vazio | É o esperado. A agenda só guarda dados quando está publicada no claude.ai |
-
-> **Lembrete:** tudo o que for registrado na agenda fica visível para quem tem acesso a ela. Não inclua dados pessoais ou sensíveis.
+> A sua agenda começa **vazia** e **não fica ligada** à nossa. Não registre dados pessoais ou sensíveis: tudo fica visível para quem tem acesso.
 
 ## Estrutura do projeto
 
