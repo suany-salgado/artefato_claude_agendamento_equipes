@@ -1,0 +1,2014 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+
+
+<title>Agenda da Equipe - Formação Profissional</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: calendário do mês à esquerda; ao clicar numa data, o painel da direita mostra as informações do dia (e, na área da coordenação, o formulário para incluir) */
+/* Fonte Intro (comercial, Fontfabric) removida desta cópia pública; a versão no claude.ai a mantém. */
+/* Fonte Intro (comercial, Fontfabric) removida desta cópia pública; a versão no claude.ai a mantém. */
+/* Paleta: azul-marinho #171C66, azul-céu #5883D0, verde #00BE6B, azul #1D40A6, turquesa #38ABB2 */
+:root{
+  --marinho:#171C66; --ceu:#5883D0; --verde:#00BE6B; --azul-escuro:#1D40A6; --turquesa:#38ABB2;
+  --bg:#F4F4F4; --surface:#FFFFFF; --line:#DCE1EE; --fg:#171C66; --muted:#565C8A;
+  --accent:#1D40A6; --accent-soft:#E8EEFA; --on-accent:#FFFFFF;
+  --btn-bg:#171C66; --btn-fg:#FFFFFF;
+  --new:#00BE6B; --new-soft:#E3F7EC; --danger:#C0262D; --past:#ECEFF6; --prazo:#E8892B; --prazo-fg:#A65A0E;
+  --shadow:0 1px 2px rgba(23,28,102,.06),0 6px 20px rgba(23,28,102,.07);
+  --f-display:"Inter","Tahoma",sans-serif;
+  --f-body:"Inter","Verdana",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0D1033; --surface:#161B4D; --line:#2A3170; --fg:#EEF1FB; --muted:#A9B1DA;
+  --accent:#8FAEEB; --accent-soft:#1F2768; --on-accent:#0D1033;
+  --btn-bg:#5883D0; --btn-fg:#0D1033;
+  --new:#00BE6B; --new-soft:#0F3A2C; --danger:#FF8A8F; --past:#12163F; --prazo:#F2A04E; --prazo-fg:#F7B877;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0D1033; --surface:#161B4D; --line:#2A3170; --fg:#EEF1FB; --muted:#A9B1DA;
+  --accent:#8FAEEB; --accent-soft:#1F2768; --on-accent:#0D1033;
+  --btn-bg:#5883D0; --btn-fg:#0D1033;
+  --new:#00BE6B; --new-soft:#0F3A2C; --danger:#FF8A8F; --past:#12163F; --prazo:#F2A04E; --prazo-fg:#F7B877;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25); color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding-block:20px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:16px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
+button{font:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+header.top{position:relative;overflow:hidden;background:var(--marinho);color:#fff;border-radius:18px;padding:22px 24px 34px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 24px;box-shadow:var(--shadow)}
+header.top > *{position:relative;z-index:1}
+.brand{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.brand .marca{display:block;width:230px;height:auto;flex:none}
+.brand .sep{width:1px;align-self:stretch;min-height:56px;background:rgba(255,255,255,.28)}
+.brand .rotulo{display:inline-block;font-family:var(--f-display);font-weight:300;font-size:11px;letter-spacing:.18em;text-transform:uppercase;border:1px solid var(--ceu);color:#DDE6F7;border-radius:999px;padding:3px 12px;margin-bottom:6px}
+.brand h1{font-size:clamp(28px,4vw,38px);font-weight:300;letter-spacing:-.005em;line-height:1.1;color:#fff}
+.brand h1 b{font-weight:700;color:var(--verde)}
+.grafismo{position:absolute;left:0;right:0;bottom:0;height:30px;width:100%;z-index:0;pointer-events:none}
+header.top .btn{background:transparent;border-color:rgba(255,255,255,.4);color:#fff}
+header.top .btn:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+header.top .btn.primary{background:var(--verde);border-color:var(--verde);color:var(--marinho)}
+header.top .btn.primary:hover{background:#19CF7E}
+header.top .mode{color:#C9D3F0}
+header.top .mode b{color:var(--verde)}
+@media (max-width:640px){.brand .sep{display:none}.brand .marca{width:190px}}
+.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.btn{border:1px solid var(--line);background:var(--surface);color:var(--fg);padding:8px 14px;border-radius:8px;font-weight:600;font-size:14px}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--btn-bg);border-color:var(--btn-bg);color:var(--btn-fg)}
+.btn.ghost{background:transparent}
+.btn.danger{color:var(--danger)}
+.btn.sm{padding:5px 10px;font-size:13px}
+.btn[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent)}
+.mode{font-size:13px;color:var(--muted)}
+.mode b{color:var(--accent)}
+
+.banner{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between;background:var(--new-soft);border:1px solid var(--new);border-left-width:5px;border-radius:10px;padding:10px 14px}
+.banner p{margin:0;font-weight:600}
+.status{font-size:13px;color:var(--muted)}
+
+.layout{display:grid;grid-template-columns:360px minmax(0,1fr);gap:16px;align-items:start}
+@media (max-width:820px){.layout{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
+
+/* calendário */
+.cal{padding:14px}
+.calhead{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}
+.calhead h2{font-size:18px;font-weight:700;text-transform:capitalize}
+.calhead .nav{display:flex;gap:4px}
+.calhead .nav .btn{padding:4px 10px}
+.grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+.grid .wd{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:center;padding:4px 0}
+.d{position:relative;aspect-ratio:1/1;border:1px solid transparent;border-radius:10px;background:none;color:var(--fg);font-weight:600;font-size:14px;font-variant-numeric:tabular-nums;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:0}
+.d:hover{background:var(--accent-soft)}
+.d.out{color:var(--muted);opacity:.45}
+.d.past{color:var(--muted)}
+.d.week{background:var(--past)}
+.d.today{border-color:var(--accent);color:var(--accent);font-weight:800}
+.d.sel{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.d .dots{display:flex;gap:2px;height:6px}
+.d .dot{width:6px;height:6px;border-radius:50%;background:var(--new)}
+.d.sel .dot{background:var(--on-accent)}
+.d .dot.novo{background:var(--new)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:10px;font-size:12px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.legend i{width:8px;height:8px;border-radius:50%;display:inline-block;background:var(--new)}
+.legend i.novo{background:var(--new)}
+.legend i.hoje{background:none;border:1.5px solid var(--accent);border-radius:3px}
+
+.prox{padding:14px;margin-top:16px}
+.prox h3{font-family:var(--f-body);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:6px}
+.prox ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.prox li button{width:100%;text-align:left;background:none;border:0;border-top:1px solid var(--line);padding:8px 2px;color:var(--fg);display:grid;grid-template-columns:76px 1fr;gap:8px;align-items:baseline}
+.prox li:first-child button{border-top:0}
+.prox li button:hover .t{color:var(--accent)}
+.prox .when{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.prox .t{font-size:14px;font-weight:600;overflow-wrap:anywhere}
+.prox .vazio{font-size:13px;color:var(--muted)}
+
+/* painel do dia */
+.dia{padding:18px 20px;display:flex;flex-direction:column;gap:14px;min-height:420px}
+.diahead{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:10px;border-bottom:1px solid var(--line);padding-bottom:12px}
+.diahead .wdl{font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--muted)}
+.diahead h2{font-size:clamp(22px,3vw,28px);font-weight:700}
+.tag{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;border-radius:999px;padding:2px 8px;vertical-align:middle;margin-left:6px}
+.tag.hoje{background:var(--accent);color:var(--on-accent)}
+.tag.passou{color:var(--muted);border:1px solid var(--line)}
+.items{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0}
+.item{display:grid;grid-template-columns:72px minmax(0,1fr);gap:14px;padding:12px 0;border-top:1px solid var(--line)}
+.item:first-child{border-top:0}
+.item .hora{font-family:var(--f-display);font-weight:700;font-size:18px;color:var(--accent);font-variant-numeric:tabular-nums;line-height:1.3}
+.item .hora.todo{font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.item h3{font-family:var(--f-body);font-size:16px;font-weight:700;margin:0;overflow-wrap:anywhere}
+.item p{margin:4px 0 0;font-size:14px;white-space:pre-wrap;overflow-wrap:anywhere;color:var(--muted)}
+.item .badge{background:var(--new);color:#171C66;border-radius:999px;padding:1px 8px;font-weight:700;font-size:11px;margin-left:6px;vertical-align:2px;font-family:var(--f-body)}
+.item.novo{background:linear-gradient(90deg,var(--new-soft),transparent 70%);border-radius:8px;padding-left:8px;margin-left:-8px}
+.item .tools{display:flex;gap:12px;margin-top:6px}
+.item .tools button{border:0;background:none;color:var(--muted);font-size:13px;padding:0;text-decoration:underline}
+.item .tools button.del{color:var(--danger)}
+.emptyday{color:var(--muted);font-size:14px;padding:18px 0;text-align:center;border:1px dashed var(--line);border-radius:10px}
+
+/* formulário inline (gestora) */
+.addbox{border:1px solid var(--accent);background:var(--accent-soft);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.addbox h3{font-family:var(--f-body);font-size:15px;font-weight:700}
+.field{display:flex;flex-direction:column;gap:4px}
+.field label{font-size:13px;font-weight:600}
+.hint{font-size:12px;color:var(--muted);font-weight:500}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.row .field{flex:1;min-width:130px}
+input,textarea,select{font:inherit;color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;width:100%}
+textarea{min-height:80px;resize:vertical}
+.err{color:var(--danger);font-size:13px;margin:0}
+.mfoot{display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap}
+.addbtn{align-self:flex-start}
+.fgroup{display:flex;flex-direction:column;gap:10px}
+.addbox .seg{align-self:flex-start}
+.diabtns{display:flex;gap:8px;flex-wrap:wrap;align-items:flex-start;justify-content:flex-end}
+.diabtns [hidden]{display:none}
+a.btn{text-decoration:none;display:inline-flex;align-items:center}
+.btn.wa{color:#0f7a3d;border-color:#9fd9b4}
+.item .tools a.wa{color:#0f7a3d;font-size:13px;text-decoration:underline}
+[hidden]{display:none !important}
+.check{display:flex;gap:8px;align-items:center;font-size:13px;font-weight:600}
+.check input{width:auto}
+
+/* evento, local e período */
+.item .ev{font-size:12px;font-weight:700;letter-spacing:.02em;color:var(--accent);margin-bottom:2px;overflow-wrap:anywhere}
+.item .meta{display:flex;flex-wrap:wrap;gap:2px 14px;font-size:13px;color:var(--muted);margin-top:3px}
+.prox .ev{display:block;font-size:12px;font-weight:600;color:var(--accent);overflow-wrap:anywhere}
+.semdia{margin-top:10px;border-top:1px solid var(--line);padding-top:8px;display:flex;flex-direction:column;gap:6px}
+.semdia h4{margin:0;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.semdia .sdi{font-size:13px;font-weight:600;border-left:3px solid var(--evc,var(--accent));padding-left:8px;overflow-wrap:anywhere}
+.semdia .sdi button{border:0;background:none;color:var(--muted);font-size:12px;text-decoration:underline;padding:0 0 0 8px}
+
+/* abas */
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);overflow-x:auto}
+.tabs button{border:0;background:none;padding:10px 14px;font-weight:700;font-size:15px;color:var(--muted);border-bottom:3px solid transparent;margin-bottom:-1px;white-space:nowrap}
+.tabs button[aria-selected="true"]{color:var(--accent);border-bottom-color:var(--accent)}
+
+/* programação do ano */
+.proghead{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:10px;margin-bottom:14px}
+.proghead h2{font-size:clamp(22px,3vw,28px)}
+.proghead p{margin:4px 0 0;max-width:70ch}
+.proghead .nav{display:flex;gap:4px}
+.progcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:14px;align-items:stretch}
+.pcard{padding:16px 18px;border-top:5px solid var(--evc,var(--accent));display:flex;flex-direction:column}
+.pcard .phead{min-height:76px;display:flex;flex-direction:column;justify-content:flex-start}
+.pcard h3{font-size:18px;font-weight:700;line-height:1.3;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pcard .loc{margin:4px 0 0;font-size:13px;color:var(--muted)}
+.pcard .loc.vazio{opacity:.6}
+.pcard.foco{outline:3px solid var(--evc,var(--accent));outline-offset:3px}
+.item .clic{cursor:pointer}
+.item .clic:hover{text-decoration:underline}
+.pcard .etapas{flex:1}
+.pcard .btn.sm{margin-top:auto;align-self:flex-start}
+.pcard .etapas + .btn.sm{margin-top:10px}
+.pcard .pfoot{margin-top:auto;padding-top:10px}
+.etapas{list-style:none;margin:10px 0 0;padding:0}
+.etapas button{width:100%;display:grid;grid-template-columns:112px minmax(0,1fr);gap:10px;text-align:left;background:none;border:0;border-top:1px solid var(--line);padding:8px 6px;color:var(--fg);border-radius:0}
+.etapas li:first-child button{border-top:0}
+.etapas button:hover .nm{color:var(--accent)}
+.etapas .dt{font-variant-numeric:tabular-nums;font-weight:700;font-size:13px}
+.etapas .nm{font-size:14px;font-weight:600;overflow-wrap:anywhere}
+.etapas .st{display:block;font-size:12px;font-weight:700;color:var(--accent)}
+.etapas li.done button{color:var(--muted)}
+.etapas li.done .nm::after{content:" ✓"}
+.etapas li.next button{background:var(--accent-soft);border-radius:8px}
+.etapas li.np button{cursor:default}
+.etapas li.np .dt{color:var(--muted);font-weight:600;font-style:italic}
+.etapas li.np .nm{color:var(--muted)}
+.pcard .btn.sm{margin-top:10px}
+.progvazio{color:var(--muted);padding:24px;text-align:center;border:1px dashed var(--line);border-radius:12px}
+
+/* tarefas */
+.colabcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,200px),1fr));gap:12px;margin-bottom:16px}
+.ccard{text-align:left;padding:14px 16px;color:var(--fg);border-top:5px solid var(--accent)}
+.ccard:hover{border-color:var(--accent)}
+.ccard[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);outline:2px solid var(--accent);outline-offset:1px}
+.ccard h3{font-size:20px;font-weight:700}
+.ccard .cnum{margin:4px 0 0;font-size:13px;color:var(--muted)}
+.ccard .catr{margin:2px 0 0;font-size:13px;font-weight:700;color:var(--danger)}
+.d .dot.tar,.legend i.tar{background:var(--turquesa);border-radius:2px}
+.d.sel .dot.tar{background:var(--on-accent)}
+.d .dot.fim,.legend i.fim{background:none;border:2px solid var(--prazo);border-radius:2px;box-sizing:border-box}
+.d.sel .dot.fim{background:none;border-color:var(--on-accent)}
+.tchip.fim{border-left-color:var(--prazo)}
+.tchip.fim:hover{border-color:var(--prazo)}
+.tchip .pz{color:var(--prazo-fg);font-weight:600}
+.diatar{display:flex;flex-direction:column;gap:8px;border-top:1px solid var(--line);padding-top:12px}
+.diatar h4{margin:0;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.tchip{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;width:100%;text-align:left;background:var(--surface);color:var(--fg);border:1px solid var(--line);border-left:4px solid var(--turquesa);border-radius:10px;padding:10px 14px}
+.tchip:hover{border-color:var(--turquesa)}
+.tchip b{font-size:15px}
+.tchip span{font-size:14px;color:var(--muted)}
+.tchip .ir{margin-left:auto;font-size:13px;font-weight:700;color:var(--accent)}
+.catrcard{border-top-color:#F2A0A0}
+.catrcard.tem{border-top-color:var(--danger)}
+.catrcard.tem h3,.catrcard.tem .cnum{color:var(--danger)}
+.catrcard[aria-pressed="true"]{outline-color:var(--danger);border-color:var(--danger)}
+.tardet{min-height:0}
+.tardet .diahead{align-items:center}
+.tgrupo{font-size:12px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;color:var(--muted);padding:12px 0 4px}
+.tgrupo + .item{border-top:0}
+.item.tdone h3{color:var(--muted);text-decoration:line-through}
+.item.tdone .hora{color:var(--muted)}
+.tag.atr{background:var(--danger);color:var(--surface)}
+.tag.feita{display:inline-block;background:none;color:var(--verde);border:0;padding:0;font-size:18px;line-height:1;letter-spacing:0;text-decoration:none}
+.item.tdone .meta .okem b{color:var(--verde);font-weight:700}
+.btn.bell{display:inline-flex;align-items:center;justify-content:center;padding:8px 10px;line-height:0}
+.btn.bell.on .risco{display:none}
+/* registro rápido de tarefas (linhas) */
+.modal.qmodal{max-width:920px;gap:10px}
+.qtop{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.qmodal .hint{margin:0 0 6px}
+.qmodal .qmais{align-self:flex-start;margin-top:4px}
+.ccard.cbacklog{border-top-color:var(--turquesa)}
+.ccard.cbacklog h3::before{content:"📥 "}
+.ccard.cbacklog[aria-pressed="true"]{outline-color:var(--turquesa);border-color:var(--turquesa)}
+.tools select.pegar{width:auto;padding:4px 8px;font-size:13px;font-weight:600;border-color:var(--turquesa)}
+.qhead,.qrow{display:grid;grid-template-columns:minmax(0,1fr) 170px 150px 150px 32px;gap:8px;align-items:center}
+.qhead{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:0 2px 6px}
+.qrow{padding:6px 0}
+.qrow + .qrow{border-top:1px dashed var(--line)}
+.qrow.salva input,.qrow.salva select{border-color:var(--verde)}
+.qrow select:disabled{opacity:1;background:var(--accent-soft);color:var(--fg);font-weight:700;cursor:not-allowed}
+.qst{width:28px;height:28px;border-radius:50%;display:inline-grid;place-items:center;font-weight:700;font-size:15px;line-height:1}
+.qst.ok{background:var(--verde);color:#fff}
+.qst.wait{color:var(--muted)}
+.qst.err{background:var(--danger);color:var(--surface)}
+.qmais{margin-top:10px;width:40px;height:40px;border-radius:50%;border:2px dashed var(--accent);background:var(--accent-soft);color:var(--accent);font-size:22px;font-weight:700;line-height:1;cursor:pointer}
+.qmais:hover{background:var(--accent);color:var(--on-accent);border-style:solid}
+@media (max-width:760px){.qhead{display:none}.qrow{grid-template-columns:1fr 1fr 32px;padding:10px 0}.qrow input[type=text]{grid-column:1/3;grid-row:1}.qrow .qst{grid-column:3;grid-row:1}.qrow select{grid-column:1/-1}}
+
+.overlay{position:fixed;inset:0;background:rgba(10,20,17,.45);display:flex;align-items:center;justify-content:center;padding:16px;z-index:50}
+.modal{background:var(--surface);color:var(--fg);border-radius:14px;width:100%;max-width:440px;padding:20px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--shadow);max-height:calc(100% - 32px);overflow:auto}
+#docOverlay a{color:var(--accent);font-weight:600;overflow-wrap:anywhere}
+.modal h2{font-size:20px}
+.modal input{background:var(--bg)}
+
+.modal.wide{max-width:760px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:9px;overflow:hidden}
+.seg button{border:0;background:var(--surface);color:var(--fg);padding:7px 16px;font-weight:600;font-size:14px}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--on-accent)}
+.relctl{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px}
+.relctl .per{font-weight:700;min-width:4ch;text-align:center}
+.relnav{display:flex;align-items:center;gap:8px}
+.relnav .btn{padding:4px 12px;font-size:18px;line-height:1.2}
+.relsum{display:flex;flex-wrap:wrap;gap:8px}
+.relsum div{flex:1;min-width:120px;border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+.relsum b{display:block;font-family:var(--f-display);font-size:24px;font-variant-numeric:tabular-nums}
+.relsum span{font-size:12px;color:var(--muted)}
+.docbody{font-size:14px;line-height:1.55;display:flex;flex-direction:column;gap:10px}
+.docbody h3{font-size:16px;margin-top:8px}
+.docbody p,.docbody li{color:var(--fg)}
+.docbody ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px}
+.docbody .meta{color:var(--muted);font-size:13px}
+.docbody table{width:100%;border-collapse:collapse;font-size:13px}
+.docbody th,.docbody td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+.docbody th{font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.docbody code{font-size:12.5px}
+.docbody h2.docparte{font-size:18px;margin-top:14px;padding:8px 12px;border-radius:8px;background:var(--accent-soft);color:var(--fg)}
+.docbody h2.docparte:first-of-type{margin-top:4px}
+.rellist{border:1px solid var(--line);border-radius:10px;max-height:46vh;overflow:auto}
+.rellist table{width:100%;border-collapse:collapse;font-size:14px}
+.rellist th,.rellist td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.rellist th{position:sticky;top:0;background:var(--surface);font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.rellist td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
+.rellist td small{display:block;color:var(--muted);white-space:pre-wrap}
+.rellist .vazio{padding:16px;color:var(--muted);text-align:center}
+.toasts{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:8px;z-index:60;max-width:min(380px,calc(100% - 32px))}
+.toast{background:var(--fg);color:var(--bg);border-radius:10px;padding:12px 14px;box-shadow:var(--shadow);display:flex;gap:10px;align-items:flex-start;animation:in .25s ease-out}
+.toast b{display:block}
+.toast small{opacity:.8}
+.toast button{margin-left:auto;background:none;border:0;color:inherit;opacity:.7;font-size:18px;line-height:1}
+@keyframes in{from{transform:translateY(8px);opacity:0}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){.toast{animation:none}}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <div>
+        <span class="rotulo">Formação Profissional</span>
+        <h1>Agenda da <b>Equipe</b></h1>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn bell" id="btnNotif" type="button" hidden aria-label="Alertas do navegador desativados — clique para ativar" title="Alertas do navegador desativados — clique para ativar"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><line class="risco" x1="3" y1="3" x2="21" y2="21"/></svg></button>
+      <button class="btn" id="btnDoc" type="button">📘 Documentação</button>
+    </div>
+    <svg class="grafismo" viewBox="0 0 1000 30" preserveAspectRatio="none" aria-hidden="true"><path d="M0 22 H380 C470 22 500 8 600 8 S800 18 1000 6" fill="none" stroke="#00BE6B" stroke-width="3" vector-effect="non-scaling-stroke"/><path d="M380 22 C480 22 520 26 640 22 S860 12 1000 16" fill="none" stroke="#5883D0" stroke-width="2" vector-effect="non-scaling-stroke"/><path d="M380 22 C470 22 540 14 660 16 S880 28 1000 26" fill="none" stroke="#38ABB2" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>
+  </header>
+
+  <div class="banner" id="banner" hidden>
+    <p id="bannerText"></p>
+  </div>
+  <div class="status" id="status">Carregando agenda…</div>
+
+  <div class="tabs" role="tablist" aria-label="Visualização">
+    <button type="button" role="tab" id="tabAgenda" aria-selected="true">Agenda</button>
+    <button type="button" role="tab" id="tabTar" aria-selected="false">Tarefas</button>
+    <button type="button" role="tab" id="tabProg" aria-selected="false">Programação</button>
+  </div>
+
+  <section id="tarView" hidden aria-label="Tarefas da equipe">
+    <div class="proghead">
+      <div>
+        <h2>Tarefas</h2>
+        <p class="hint">Clique no nome de um colaborador para ver as demandas registradas para ele. O Backlog guarda tarefas que qualquer pessoa pode pegar.</p>
+      </div>
+      <div class="nav">
+        <button class="btn" id="btnRelTar" type="button">📄 Relatório mensal (PDF)</button>
+        <button class="btn primary" id="btnNovaTar" type="button">+ Nova tarefa</button>
+      </div>
+    </div>
+    <div class="colabcards" id="colabCards"></div>
+    <section class="card dia tardet" id="tarDet" aria-live="polite">
+      <div class="diahead">
+        <h2 id="tarDetTitulo">Demandas</h2>
+        <button class="btn sm" id="btnNovaTarColab" type="button" hidden>+ Nova tarefa</button>
+      </div>
+      <p class="emptyday" id="tarDetVazio"></p>
+      <ul class="items" id="tarItems"></ul>
+    </section>
+  </section>
+
+  <section id="prog" hidden aria-label="Programação do ano">
+    <div class="proghead">
+      <div>
+        <h2 id="progTitulo">Programação</h2>
+        <p class="hint" id="progNota" hidden></p>
+      </div>
+      <div class="nav">
+        <button class="btn primary" id="btnNovoProg" type="button" hidden>+ Novo programa</button>
+        <button class="btn" id="anoPrev" type="button" aria-label="Ano anterior">‹</button>
+        <button class="btn" id="anoNext" type="button" aria-label="Próximo ano">›</button>
+      </div>
+    </div>
+    <div class="progcards" id="progCards"></div>
+  </section>
+
+  <div class="layout" id="agendaView">
+    <aside>
+      <section class="card cal" aria-label="Calendário">
+        <div class="calhead">
+          <h2 id="mesTitulo">Mês</h2>
+          <div class="nav">
+            <button class="btn" id="prev" type="button" aria-label="Mês anterior">‹</button>
+            <button class="btn" id="hoje" type="button">Hoje</button>
+            <button class="btn" id="next" type="button" aria-label="Próximo mês">›</button>
+          </div>
+        </div>
+        <div class="grid" id="grid"></div>
+        <div class="semdia" id="semDia" hidden></div>
+        <div class="legend">
+          <span><i></i>Tem informação</span>
+          <span><i class="tar"></i>Início de tarefa</span>
+          <span><i class="fim"></i>Prazo final de tarefa</span>
+        </div>
+      </section>
+      <section class="card prox" aria-label="Próximas informações">
+        <h3>Próximas</h3>
+        <ul id="proxList"></ul>
+      </section>
+    </aside>
+
+    <section class="card dia" aria-live="polite">
+      <div class="diahead">
+        <div>
+          <div class="wdl" id="diaWd"></div>
+          <h2 id="diaTitulo"></h2>
+        </div>
+        <div class="diabtns">
+          <a class="btn wa" id="btnWaDia" href="#" target="_blank" rel="noopener" hidden>Enviar o dia no WhatsApp</a>
+          <button class="btn" id="btnRel" type="button">📄 Relatório</button>
+          <button class="btn primary addbtn" id="btnAdd" type="button" hidden>+ Incluir informação</button>
+        </div>
+      </div>
+
+      <form class="addbox" id="avisoForm" novalidate hidden>
+        <h3 id="formTitle">Nova informação</h3>
+        <div class="seg" role="group" aria-label="Tipo de informação" id="tipoSeg">
+          <button type="button" id="tipoReu" aria-pressed="true">Reunião</button>
+          <button type="button" id="tipoProg" aria-pressed="false">Programação</button>
+          <button type="button" id="tipoTar" aria-pressed="false" title="Abre a caixa de nova tarefa">Tarefas</button>
+        </div>
+
+        <div class="field">
+          <label for="fColab">Nome do colaborador</label>
+          <select id="fColab" required>
+            <option value="">Selecione quem está cadastrando</option>
+            <option>Colaborador 1</option>
+            <option>Coordenador</option>
+            <option>Colaborador 2</option>
+            <option>Colaborador 3</option>
+          </select>
+        </div>
+
+        <div id="reuFields" class="fgroup">
+          <div class="field">
+            <label for="fTitulo">Informação</label>
+            <input id="fTitulo" type="text" maxlength="140" placeholder="Ex.: Reunião de alinhamento na sala 2">
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="fData">Data</label>
+              <input id="fData" type="date">
+            </div>
+            <div class="field">
+              <label for="fHora">Horário <span class="hint">(opcional)</span></label>
+              <input id="fHora" type="time">
+            </div>
+          </div>
+          <div class="field">
+            <label for="fDesc">Detalhes <span class="hint">(opcional)</span></label>
+            <textarea id="fDesc" maxlength="2000" placeholder="Pauta, link, o que levar…"></textarea>
+          </div>
+        </div>
+
+        <div id="progFields" class="fgroup" hidden>
+          <div class="field">
+            <label for="pNome">Nome do programa</label>
+            <input id="pNome" type="text" maxlength="120" list="evList" placeholder="Ex.: Programa de Liderança">
+            <datalist id="evList"></datalist>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="pLanc">Lançamento do edital e inscrições</label>
+              <input id="pLanc" type="date">
+            </div>
+            <div class="field">
+              <label for="pEnc">Encerramento das inscrições</label>
+              <input id="pEnc" type="date">
+            </div>
+            <div class="field">
+              <label for="pDiv">Divulgação dos selecionados <span class="hint">(opcional)</span></label>
+              <input id="pDiv" type="date">
+            </div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="pReal">Realização <span class="hint">(início)</span></label>
+              <input id="pReal" type="date">
+            </div>
+            <div class="field">
+              <label for="pRealAte">Realização <span class="hint">(fim, opcional)</span></label>
+              <input id="pRealAte" type="date">
+            </div>
+          </div>
+          <div class="field">
+            <label for="pLocal">Local <span class="hint">(opcional)</span></label>
+            <input id="pLocal" type="text" maxlength="140" placeholder="Ex.: Rio Centro – Barra da Tijuca/RJ">
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="pAulas">Início das aulas online <span class="hint">(opcional)</span></label>
+              <input id="pAulas" type="date">
+            </div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="pImer">Imersão presencial <span class="hint">(opcional — início)</span></label>
+              <input id="pImer" type="date">
+            </div>
+            <div class="field">
+              <label for="pImerAte">Imersão presencial <span class="hint">(fim)</span></label>
+              <input id="pImerAte" type="date">
+            </div>
+          </div>
+        </div>
+
+        <p class="err" id="formErr" hidden></p>
+        <div class="mfoot">
+          <button class="btn danger" type="button" id="progDel" hidden style="margin-right:auto">Apagar programa</button>
+          <button class="btn ghost" type="button" id="formCancel">Cancelar</button>
+          <button class="btn primary" type="submit" id="formOk">Publicar para a equipe</button>
+        </div>
+      </form>
+
+      <ul class="items" id="items"></ul>
+      <div class="diatar" id="diaTar" hidden></div>
+    </section>
+  </div>
+</div>
+
+<div class="overlay" id="delOverlay" hidden>
+  <div class="modal" role="dialog" aria-labelledby="delTitle">
+    <h2 id="delTitle">Apagar esta informação?</h2>
+    <p id="delText" style="margin:0"></p>
+    <div class="mfoot">
+      <button class="btn ghost" type="button" id="delCancel">Cancelar</button>
+      <button class="btn danger" type="button" id="delOk">Apagar</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="qtar" hidden>
+  <div class="modal qmodal" role="dialog" aria-modal="true" aria-labelledby="qTitulo">
+    <h2 id="qTitulo">Nova tarefa</h2>
+    <p class="hint" id="qHint">Escreva a tarefa e escolha o colaborador (ou “Backlog”, para deixar disponível à equipe); o ✓ verde mostra que a linha está completa. Use o “+” para mais linhas. Tudo é salvo quando você clicar em “Concluir”. O início vem com a data de hoje e o prazo é opcional.</p>
+    <div class="qhead" aria-hidden="true"><span>Tarefa</span><span>Colaborador</span><span>Início</span><span>Prazo</span><span></span></div>
+    <div id="qRows"></div>
+    <p class="err" id="qErr" hidden></p>
+    <button class="qmais" id="qMais" type="button" aria-label="Adicionar outra tarefa" title="Adicionar outra tarefa">+</button>
+    <div class="mfoot">
+      <button class="btn ghost" type="button" id="qFechar">Cancelar</button>
+      <button class="btn primary" type="button" id="qOk">Concluir</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="tarOverlay" hidden>
+  <form class="modal" id="tarForm" role="dialog" aria-labelledby="tarFormTitle" novalidate>
+    <h2 id="tarFormTitle">Nova tarefa</h2>
+    <div class="field">
+      <label for="tColab">Colaborador <span class="hint">(responsável)</span></label>
+      <select id="tColab" required><option value="">Selecione</option></select>
+    </div>
+    <div class="field">
+      <label for="tDesc">Demanda</label>
+      <textarea id="tDesc" maxlength="2000" placeholder="Ex.: Revisar o edital do programa Itália"></textarea>
+    </div>
+    <div class="row">
+      <div class="field">
+        <label for="tInicio">Data de início</label>
+        <input id="tInicio" type="date" required>
+      </div>
+      <div class="field">
+        <label for="tPrazo">Prazo <span class="hint">(opcional)</span></label>
+        <input id="tPrazo" type="date">
+      </div>
+    </div>
+    <p class="hint" id="tReg" style="margin:0">A data de registro é preenchida automaticamente.</p>
+    <p class="err" id="tErr" hidden></p>
+    <div class="mfoot">
+      <button class="btn ghost" type="button" id="tarCancel">Cancelar</button>
+      <button class="btn primary" type="submit" id="tarOk">Registrar tarefa</button>
+    </div>
+  </form>
+</div>
+
+<div class="overlay" id="rtOverlay" hidden>
+  <div class="modal wide" role="dialog" aria-labelledby="rtTitle">
+    <h2 id="rtTitle">Relatório mensal de tarefas</h2>
+    <div class="relctl">
+      <div class="relnav"><button class="btn" type="button" id="rtPrev" aria-label="Mês anterior">‹</button><span class="per" id="rtPer" aria-live="polite"></span><button class="btn" type="button" id="rtNext" aria-label="Próximo mês">›</button></div>
+    </div>
+    <p class="hint" style="margin:0">Inclui as tarefas com data de início no mês escolhido, separadas por colaborador. Use ‹ › para trocar o mês.</p>
+    <div class="relsum" id="rtSum"></div>
+    <div class="rellist" id="rtList"></div>
+    <p class="err" id="rtErr" hidden></p>
+    <div class="mfoot">
+      <button class="btn ghost" type="button" id="rtFechar">Fechar</button>
+      <button class="btn primary" type="button" id="rtPdf">Baixar PDF</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="tarDelOverlay" hidden>
+  <div class="modal" role="dialog" aria-labelledby="tarDelTitle">
+    <h2 id="tarDelTitle">Apagar esta tarefa?</h2>
+    <p id="tarDelText" style="margin:0;overflow-wrap:anywhere"></p>
+    <div class="mfoot">
+      <button class="btn ghost" type="button" id="tarDelCancel">Cancelar</button>
+      <button class="btn danger" type="button" id="tarDelOk">Apagar</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="docOverlay" hidden>
+  <div class="modal wide" role="dialog" aria-labelledby="docTitle">
+    <h2 id="docTitle">Documentação da agenda</h2>
+    <div class="docbody">
+      <p class="meta">Agenda da Equipe – Formação Profissional · atualizada em 24/11/2026 · documentação oficial e única da agenda</p>
+      <h2 class="docparte">Parte 1 · Documentação do artefato</h2>
+
+      <h3>Visão geral</h3>
+      <p>Página interativa (artefato do claude.ai) onde a equipe de Formação Profissional da organização registra reuniões, a programação mensal e anual dos programas e as tarefas de cada colaborador. Funciona no navegador do computador, com login no claude.ai, para pessoas da organização. A conta responsável é a conta do setor.</p>
+
+      <h3>Pasta do projeto</h3>
+      <p>Arquivos originais, relatórios mensais e materiais da agenda ficam no SharePoint: <a href="#" target="_blank" rel="noopener">Documentos Compartilhados › Agenda - Formação Profissional</a>. A cópia em PDF desta documentação também fica nessa pasta: use “📄 Baixar em PDF” no fim desta janela e salve o arquivo lá.</p>
+
+      <h3>Funcionalidades</h3>
+      <table>
+        <thead><tr><th>Função</th><th>O que faz</th></tr></thead>
+        <tbody>
+          <tr><td>Calendário do mês</td><td>Marcas por dia: bolinha verde = tem informação; quadradinho turquesa = início de tarefa; quadradinho laranja vazado = prazo final de tarefa. Ao clicar numa data, lista as informações do dia.</td></tr>
+          <tr><td>Tarefas no dia</td><td>No painel do dia, o bloco “Tarefas” mostra só o nome do colaborador e a quantidade de inícios e/ou prazos finais naquele dia, sem o conteúdo da demanda (inclui tarefas concluídas). “Ver tarefas →” abre a aba Tarefas já na pessoa.</td></tr>
+          <tr><td>Programação</td><td>Linha do tempo de cada programa por ano, com “+ Novo programa”.</td></tr>
+          <tr><td>Incluir: Reunião</td><td>Nome do colaborador*, Informação*, Data*, Horário, Detalhes.</td></tr>
+          <tr><td>Incluir: Programação</td><td>Nome do colaborador*, Nome do programa*, Lançamento do edital*, Encerramento das inscrições*, Divulgação, Realização* (ou Imersão), Local, Início das aulas online. Gera um registro por etapa.</td></tr>
+          <tr><td>Backlog</td><td>Primeiro card da aba Tarefas, no lugar do antigo “Atrasadas”. Funciona como um colaborador em “Atribuir a…”: guarda as tarefas disponíveis à equipe (grupo “Disponíveis”). Em cada tarefa do Backlog, “✋ Pegar para…” escolhe quem vai realizar; a tarefa passa para o cartão dessa pessoa com a data em que foi pega.</td></tr>
+          <tr><td>Nova tarefa pelo card</td><td>“+ Nova tarefa para [nome]”, dentro do card de um colaborador ou do Backlog, abre a caixa já atribuída a ele, com o colaborador travado em todas as linhas. Para escolher livremente, use “+ Nova tarefa” no topo da aba ou o segmento “Tarefas” da Agenda.</td></tr>
+          <tr><td>Tarefas</td><td>Aba com um cartão por colaborador (pendentes, concluídas e atrasadas). Ao clicar no nome, lista as demandas com data de registro (automática), data de início, prazo e status. Tarefa concluída não some: vai para o grupo “Concluídas”, com um ✓ verde ao lado do título e “✓ Concluída em dd/mm/aaaa”. Qualquer pessoa da equipe pode registrar, editar, concluir, reabrir ou apagar.</td></tr>
+          <tr><td>Relatório de tarefas</td><td>Botão “📄 Relatório mensal (PDF)” na aba Tarefas: escolhe o mês com ‹ › e baixa um PDF com as tarefas de início naquele mês, por colaborador (demanda, registro, início, prazo, status).</td></tr>
+          <tr><td>Incluir: Tarefa</td><td>“+ Nova tarefa” (aba Tarefas), “+ Nova tarefa para [nome]” ou o segmento “Tarefas” no formulário da Agenda abrem uma caixa com linhas: tarefa* (até 2.000 caracteres) e colaborador* (começa vazio), com início (hoje, alterável) e prazo opcional. O ✓ verde indica linha completa; o “+” abre outra linha; tudo é gravado ao clicar em “Concluir” (“Cancelar” descarta). Não há campo de quem registra. Início e prazo podem ser alterados depois em “Editar”; a data de registro é gravada automaticamente.</td></tr>
+          <tr><td>Editar / Apagar</td><td>Em cada item do dia, com confirmação para apagar.</td></tr>
+          <tr><td>WhatsApp</td><td>Abre o WhatsApp com a mensagem do item ou do dia pronta.</td></tr>
+          <tr><td>Alertas</td><td>Aviso de novidades desde a última visita e alerta do navegador com a aba aberta. O sininho no topo mostra o estado: riscado = alertas do navegador desativados (clique para ativar); sem risco = ativados. Para desativar, use as configurações do navegador.</td></tr>
+          <tr><td>Relatório</td><td>Do dia, do mês ou do ano, com setas ‹ › para trocar o período; baixa em CSV ou HTML para imprimir / PDF.</td></tr>
+        </tbody>
+      </table>
+      <p class="meta">* Obrigatório. Colaboradores da Agenda: Colaborador 1, Coordenador, Colaborador 2 e Colaborador 3; na aba Tarefas também Colaborador 4 e Colaborador 5. O nome aparece no item do dia, no relatório e na coluna “Colaborador” do CSV.</p>
+
+      <h3>Arquitetura e dados</h3>
+      <p>Um único arquivo HTML publicado como artefato. Os dados ficam no banco compartilhado do artefato (capacidade <code>db</code>) e atualizam ao vivo para todos; os relatórios usam a capacidade <code>downloads</code>.</p>
+      <table>
+        <thead><tr><th>Coleção</th><th>Conteúdo</th></tr></thead>
+        <tbody>
+          <tr><td><code>avisos</code></td><td>Um registro por reunião ou etapa de programa. Campos: colaborador, tipo, titulo, data, ate, hora, descricao, evento, etapa, ordem, local, soMes, naoPrevisto, criadoEm, editadoEm.</td></tr>
+          <tr><td><code>tarefas</code></td><td>Uma demanda por registro. Campos: colaborador (responsável ou “Backlog”), descricao, inicio, prazo, status (pendente ou concluida), concluidaEm, pegaEm (quando alguém pegou do Backlog), criadoEm (data de registro), editadoEm. No calendário aparecem só o início e o prazo, com o nome do responsável.</td></tr>
+          <tr><td><code>notas</code></td><td>Nota por ano da Programação.</td></tr>
+          <tr><td><code>config/pin</code></td><td>Antigo PIN, sem uso desde a versão 19.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Permissões e segurança</h3>
+      <ul>
+        <li>Quem pode alterar é definido pelo papel da conta no compartilhamento do artefato. O PIN foi retirado porque não impedia gravações pelo chat do Claude.</li>
+        <li>A conta do setor é a dona e pode alterar tudo; como o login é compartilhado, o campo Nome do colaborador registra a autoria.</li>
+        <li>O chat do Claude grava com as permissões de quem pede. O código pede que ele pergunte os campos obrigatórios antes de gravar, mas isso não é uma trava técnica.</li>
+        <li>Não registre dados sensíveis: tudo é visível para quem tem acesso.</li>
+        <li>Medida disponível, ainda não aplicada: restringir a gravação à conta do setor e a quem for Editor; as demais contas continuariam vendo a agenda e recebendo os alertas.</li>
+      </ul>
+
+      <h3>Histórico de versões</h3>
+      <table>
+        <thead><tr><th>Data</th><th>Alteração</th></tr></thead>
+        <tbody>
+          <tr><td>24/11/2026</td><td>Documentação técnica incorporada a este botão como Parte 2; o PDF sai em um único arquivo com as duas partes.</td></tr>
+          <tr><td>24/11/2026</td><td>Documentação única: esta janela passa a ser a documentação oficial, com “📄 Baixar em PDF” e “📁 Abrir pasta na rede” para guardar a cópia na pasta do projeto.</td></tr>
+          <tr><td>24/11/2026</td><td>Tarefa concluída marcada só com um ✓ verde ao lado do título; no Backlog, o grupo passa a se chamar “Disponíveis”.</td></tr>
+          <tr><td>24/11/2026</td><td>“+ Nova tarefa para [nome]” abre a caixa já atribuída a essa pessoa (ou ao Backlog), com o colaborador travado.</td></tr>
+          <tr><td>24/11/2026</td><td>Card “📥 Backlog” na aba Tarefas: tarefas sem dono que qualquer pessoa pode pegar com “✋ Pegar para…”.</td></tr>
+          <tr><td>24/11/2026</td><td>“Ativar alertas do navegador” virou um sininho no topo: riscado quando os alertas estão desativados (clique para ativar) e sem risco quando ativados.</td></tr>
+          <tr><td>24/11/2026</td><td>Botão “Tarefas” no formulário de inclusão da Agenda (ao lado de Reunião e Programação): abre a mesma caixa de “+ Nova tarefa”.</td></tr>
+          <tr><td>24/11/2026</td><td>Card “⚠ Atrasadas” removido da aba Tarefas (cada tarefa atrasada continua com a etiqueta “Atrasada” e o número aparece no cartão do colaborador).</td></tr>
+          <tr><td>24/11/2026</td><td>Nova tarefa em caixa com linhas (tarefa + colaborador, ✓ verde, “+”), gravadas só ao clicar em “Concluir”; sai o campo “De” (quem registra); prazo opcional.</td></tr>
+        </tbody>
+      </table>
+      <p class="meta">Mostra só as 10 últimas mudanças. As anteriores ficam no histórico do próprio artefato.</p>
+
+      <h3>Manutenção</h3>
+      <ul>
+        <li>Alterações são pedidas ao Claude com a conta do setor, informando o link da agenda; a nova versão sai no mesmo endereço, sem perder dados.</li>
+        <li>Para incluir ou trocar colaboradores, peça ao Claude (a lista da Agenda fica no formulário e na constante <code>COLABS</code>; a da aba Tarefas, na constante <code>TCOLABS</code>).</li>
+        <li>Não há lixeira: salve mensalmente o relatório do mês em CSV na <a href="#" target="_blank" rel="noopener">pasta do projeto no SharePoint</a>.</li>
+        <li>O histórico de versões do artefato restaura a página, não os dados.</li>
+        <li>Se aparecer “A agenda atingiu o limite de registros”, apague informações antigas depois de salvá-las em CSV.</li>
+        <li>Registros antigos sem colaborador aparecem sem o nome; ao editar um deles, é preciso escolher o colaborador para salvar.</li>
+        <li>O “Histórico de versões” desta documentação mantém só as 10 últimas mudanças: ao incluir uma nova, retire a mais antiga.</li>
+      </ul>
+
+      <h2 class="docparte">Parte 2 · Documentação técnica</h2>
+      <p class="meta">Detalhes de funcionamento, dados, permissões e manutenção.</p>
+      <h3>Ficha técnica</h3>
+<table class="tec">
+        <thead><tr><th>Item</th><th>Valor</th></tr></thead>
+        <tbody>
+          <tr><td>Endereço</td><td>Endereço interno no claude.ai (não divulgado nesta cópia)</td></tr>
+          <tr><td>Plataforma</td><td>Artefato publicado no claude.ai (contrato de execução 0.2.96)</td></tr>
+          <tr><td>Acesso</td><td>Pessoas da organização com login no claude.ai</td></tr>
+          <tr><td>Conta responsável</td><td>Conta do setor (Comunicação / Formação)</td></tr>
+          <tr><td>Versão em vigor</td><td>55, de 24/11/2026</td></tr>
+          <tr><td>Requisitos</td><td>Navegador do computador com login no claude.ai; fora do Claude a página não carrega os dados</td></tr>
+        </tbody>
+      </table>
+      <h3>Funcionalidades em detalhe</h3>
+      <p>Todas as funções ficam no painel principal, sem PIN, para qualquer pessoa com permissão de gravação.</p>
+<table class="tec">
+        <thead><tr><th>Função</th><th>Onde fica</th><th>O que faz</th></tr></thead>
+        <tbody>
+          <tr><td>Calendário do mês</td><td>Aba Agenda, à esquerda</td><td>Marca os dias: bolinha verde = tem informação; quadradinho turquesa = início de tarefa; quadradinho laranja vazado = prazo de tarefa. Ao clicar numa data, o painel da direita lista o dia</td></tr>
+          <tr><td>Tarefas no dia</td><td>Painel do dia, bloco “Tarefas”</td><td>Mostra só o nome do colaborador e quantos inícios e prazos caem no dia; “Ver tarefas →” abre a aba Tarefas na pessoa</td></tr>
+          <tr><td>Próximos itens</td><td>Aba Agenda</td><td>Lista o que vem a seguir</td></tr>
+          <tr><td>Programação do ano</td><td>Aba Programação</td><td>Linha do tempo de cada programa por ano, com navegação entre anos e botão “+ Novo programa”</td></tr>
+          <tr><td>Incluir informação: Reunião</td><td>Botão “+ Incluir informação” no dia</td><td>Campos: Nome do colaborador*, Informação*, Data*, Horário, Detalhes</td></tr>
+          <tr><td>Incluir informação: Programação</td><td>Mesmo formulário, segmento Programação</td><td>Campos: Nome do colaborador*, Nome do programa*, Lançamento do edital*, Encerramento das inscrições*, Divulgação, Realização* (ou Imersão), Local, Início das aulas online. Gera um registro por etapa</td></tr>
+          <tr><td>Tarefas por colaborador</td><td>Aba Tarefas</td><td>Primeiro o card “📥 Backlog”, com as tarefas disponíveis à equipe; cada uma pode ser assumida com “✋ Pegar para…” e passa para o cartão de quem pegou, com a data. Depois, um cartão por pessoa com pendentes, concluídas e atrasadas (em vermelho). Tarefas concluídas vão para o grupo “Concluídas”, com um ✓ verde ao lado do título e “✓ Concluída em dd/mm/aaaa”. Cada tarefa pode ser concluída, reaberta, editada ou apagada</td></tr>
+          <tr><td>Nova tarefa</td><td>Botão “+ Nova tarefa” (aba Tarefas), “+ Nova tarefa para [nome]” e segmento “Tarefas” no formulário da Agenda</td><td>Abre uma caixa com linhas: Tarefa* (até 2.000 caracteres), Colaborador*, Início (hoje, alterável) e Prazo (opcional). Pelo card de uma pessoa (ou do Backlog), o colaborador vem travado. O ✓ verde indica linha completa e o “+” abre outra linha. Nada é gravado até clicar em “Concluir”; “Cancelar” descarta</td></tr>
+          <tr><td>Relatório mensal de tarefas</td><td>Botão “📄 Relatório mensal (PDF)” na aba Tarefas</td><td>Escolhe o mês com ‹ › e baixa um PDF com as tarefas de início no mês, por colaborador (demanda, registro, início, prazo, status)</td></tr>
+          <tr><td>Editar / Apagar</td><td>Em cada item do dia</td><td>Edita ou exclui o registro (com confirmação); programas são editados ou apagados inteiros</td></tr>
+          <tr><td>WhatsApp</td><td>Em cada item e “Enviar o dia no WhatsApp”</td><td>Abre o WhatsApp com a mensagem pronta</td></tr>
+          <tr><td>Alertas</td><td>Banner de novidades e sininho no topo</td><td>Avisa quando há novidades desde a última visita. Sininho riscado = alertas do navegador desativados (clique para ativar); sem risco = ativados. Para desativar, use as configurações do navegador</td></tr>
+          <tr><td>Relatório</td><td>Botão “📄 Relatório” na aba Agenda</td><td>Do dia, do mês ou do ano, com setas ‹ › para trocar o período; baixa em CSV ou HTML para imprimir / salvar em PDF</td></tr>
+          <tr><td>Documentação</td><td>Botão “📘 Documentação” no topo</td><td>Esta documentação (Parte 1 e Parte 2); “📄 Baixar em PDF” gera um único arquivo com as duas partes e “📁 Abrir pasta na rede” abre a pasta do projeto</td></tr>
+        </tbody>
+      </table>
+      <p class="meta">* Obrigatório. Colaboradores da Agenda: Colaborador 1, Coordenador, Colaborador 2 e Colaborador 3; na aba Tarefas também Colaborador 4, Colaborador 5 e o Backlog. O nome aparece no item do dia, no relatório (“Cadastrado por”) e na coluna “Colaborador” do CSV.</p>
+      <h3>Arquitetura</h3>
+      <p>A agenda é um único arquivo HTML (página, estilos e JavaScript juntos) publicado como artefato. Os dados não ficam no arquivo: ficam no banco compartilhado do artefato, lido e gravado em tempo real por todos que têm a página aberta. A página e o chat do Claude gravam no mesmo banco; os relatórios e esta documentação são gerados a partir da página e salvos manualmente no SharePoint.</p>
+      <h3>Capacidades declaradas no artefato</h3>
+<table class="tec">
+        <thead><tr><th>Capacidade</th><th>Uso</th></tr></thead>
+        <tbody>
+          <tr><td>db</td><td>Banco compartilhado com as coleções abaixo; atualização ao vivo (onSnapshot)</td></tr>
+          <tr><td>downloads</td><td>Download dos relatórios em CSV e HTML, do relatório mensal de tarefas em PDF e desta documentação em PDF, com confirmação do navegador</td></tr>
+        </tbody>
+      </table>
+      <h3>Coleções do banco</h3>
+<table class="tec">
+        <thead><tr><th>Coleção</th><th>Conteúdo</th><th>Situação</th></tr></thead>
+        <tbody>
+          <tr><td>avisos</td><td>Um documento por reunião ou por etapa de programa</td><td>Em uso</td></tr>
+          <tr><td>tarefas</td><td>Um documento por tarefa (demanda) de um colaborador ou do Backlog</td><td>Em uso</td></tr>
+          <tr><td>notas</td><td>Nota por ano da Programação (documento “ano-AAAA”, campo texto)</td><td>Em uso</td></tr>
+          <tr><td>config/pin</td><td>Hash do antigo PIN da coordenação</td><td>Sem uso desde a versão 19</td></tr>
+        </tbody>
+      </table>
+      <h3>Campos de um registro em avisos</h3>
+<table class="tec">
+        <thead><tr><th>Campo</th><th>Tipo</th><th>Descrição</th></tr></thead>
+        <tbody>
+          <tr><td>colaborador</td><td>texto</td><td>Quem cadastrou: Colaborador 1, Coordenador, Colaborador 2 ou Colaborador 3. Obrigatório desde a versão 21</td></tr>
+          <tr><td>tipo</td><td>texto</td><td>“reuniao” ou “programacao”</td></tr>
+          <tr><td>titulo</td><td>texto</td><td>A informação (na programação, o nome da etapa)</td></tr>
+          <tr><td>data</td><td>AAAA-MM-DD</td><td>Data inicial</td></tr>
+          <tr><td>ate</td><td>AAAA-MM-DD</td><td>Data final, quando é um período</td></tr>
+          <tr><td>hora</td><td>HH:MM</td><td>Horário; vazio = dia todo</td></tr>
+          <tr><td>descricao</td><td>texto</td><td>Detalhes</td></tr>
+          <tr><td>evento</td><td>texto</td><td>Nome do programa (vazio em reuniões)</td></tr>
+          <tr><td>etapa</td><td>texto</td><td>lanc, enc, div, aulas, imer ou real</td></tr>
+          <tr><td>ordem</td><td>número</td><td>Ordem da etapa no programa</td></tr>
+          <tr><td>local</td><td>texto</td><td>Local da realização ou imersão</td></tr>
+          <tr><td>soMes / naoPrevisto</td><td>sim/não</td><td>Etapa com só o mês definido / sem data prevista</td></tr>
+          <tr><td>criadoEm / editadoEm</td><td>data e hora</td><td>Registro automático de criação e edição</td></tr>
+        </tbody>
+      </table>
+      <h3>Campos de um registro em tarefas</h3>
+<table class="tec">
+        <thead><tr><th>Campo</th><th>Tipo</th><th>Descrição</th></tr></thead>
+        <tbody>
+          <tr><td>colaborador</td><td>texto</td><td>Responsável: Backlog (tarefa disponível à equipe), Colaborador 1, Coordenador, Colaborador 2, Colaborador 3, Colaborador 4 ou Colaborador 5. Obrigatório</td></tr>
+          <tr><td>descricao</td><td>texto</td><td>A tarefa, até 2.000 caracteres. Obrigatório</td></tr>
+          <tr><td>inicio</td><td>AAAA-MM-DD</td><td>Data de início; a caixa sugere a data de hoje. Obrigatório</td></tr>
+          <tr><td>prazo</td><td>AAAA-MM-DD</td><td>Prazo final, opcional; não pode ser antes do início</td></tr>
+          <tr><td>status</td><td>texto</td><td>“pendente” ou “concluida”</td></tr>
+          <tr><td>concluidaEm</td><td>data e hora</td><td>Quando foi marcada como concluída</td></tr>
+          <tr><td>pegaEm</td><td>data e hora</td><td>Quando alguém pegou a tarefa do Backlog</td></tr>
+          <tr><td>criadoEm / editadoEm</td><td>data e hora</td><td>Registro automático de criação e edição</td></tr>
+        </tbody>
+      </table>
+      <p>Tarefas antigas podem ter o campo registradoPor (o antigo “De”), que não é mais usado nem exibido. No navegador de cada pessoa ficam só preferências locais: a aba aberta, o colaborador selecionado e a data da última visita (para o aviso de novidades).</p>
+      <h3>Permissões e segurança em detalhe</h3>
+      <p>Quem pode alterar a agenda é definido pelo papel da conta no compartilhamento do artefato, não pela página. Por isso o PIN foi retirado na versão 19.</p>
+      <ul>
+        <li><b>Por que o PIN saiu:</b> ele era conferido só dentro da página e escondia os botões, mas não impedia gravações. Pelo chat do Claude, qualquer conta com permissão alterava os dados sem PIN.</li>
+        <li><b>Regra de gravação atual:</b> a padrão da plataforma. Pessoas com login leem; contas com papel Colaborador (Contributor) ou acima gravam; Leitor e Comentarista não gravam.</li>
+        <li><b>Conta do setor:</b> é a dona do artefato e sempre pode alterar tudo. Como várias pessoas usam o mesmo login, a plataforma não distingue quem está usando; o campo Nome do colaborador registra essa autoria.</li>
+        <li><b>Chat do Claude ao lado da agenda:</b> não pode ser desligado e grava com as permissões de quem pede. O código traz uma regra pedindo que ele pergunte o colaborador e os campos obrigatórios antes de gravar, mas isso não é uma trava técnica.</li>
+        <li><b>Dados sensíveis:</b> não devem ser registrados na agenda. Tudo nela é visível para quem tem acesso.</li>
+        <li><b>Medida disponível, ainda não aplicada:</b> restringir a gravação à conta do setor e a quem for Editor; as demais contas continuariam vendo a agenda e recebendo os alertas.</li>
+      </ul>
+      <h3>Histórico completo de alterações</h3>
+<table class="tec">
+        <thead><tr><th>Data</th><th>Mudança</th></tr></thead>
+        <tbody>
+          <tr><td>24/11/2026</td><td>Documentação técnica incorporada ao botão “📘 Documentação” (Parte 2); PDF único com as duas partes e atalho para a pasta na rede</td></tr>
+          <tr><td>24/11/2026</td><td>Tarefa concluída marcada só com um ✓ verde; Backlog com o texto “Disponíveis”; “+ Nova tarefa para [nome]” abre a caixa com o colaborador travado</td></tr>
+          <tr><td>24/11/2026</td><td>Card “📥 Backlog” no lugar do antigo “Atrasadas”, que funciona como um colaborador em “Atribuir a…”, com “✋ Pegar para…”</td></tr>
+          <tr><td>24/11/2026</td><td>“Ativar alertas do navegador” virou um sininho no topo (riscado = desativados, sem risco = ativados)</td></tr>
+          <tr><td>24/11/2026</td><td>Segmento “Tarefas” no formulário da Agenda, que abre a caixa de nova tarefa</td></tr>
+          <tr><td>24/11/2026</td><td>Card “⚠ Atrasadas” retirado; atrasos seguem no cartão de cada colaborador e na etiqueta “Atrasada”</td></tr>
+          <tr><td>24/11/2026</td><td>Nova tarefa em caixa com linhas, gravadas só em “Concluir”; sai o campo “De” (quem registra); prazo opcional</td></tr>
+          <tr><td>18/11/2026</td><td>Início e prazo das tarefas no calendário, só com o nome do colaborador</td></tr>
+          <tr><td>18/11/2026</td><td>Colaborador 4 e Colaborador 5 na aba Tarefas</td></tr>
+          <tr><td>18/11/2026</td><td>Abas na ordem Agenda, Tarefas, Programação; relatório mensal de tarefas em PDF; botão “📄 Relatório” dentro da aba Agenda</td></tr>
+          <tr><td>18/11/2026</td><td>Nova aba Tarefas por colaborador</td></tr>
+          <tr><td>16/11/2026</td><td>Botão “📘 Documentação” na agenda</td></tr>
+          <tr><td>16/11/2026</td><td>Versão 21: campo obrigatório Nome do colaborador em Reunião e Programação; regra para o chat do Claude no código</td></tr>
+          <tr><td>16/11/2026</td><td>Versão 20: setas ‹ › no relatório para trocar dia, mês ou ano</td></tr>
+          <tr><td>16/11/2026</td><td>Versão 19: PIN e “Área da coordenação” retirados; inclusão, edição, WhatsApp, programação e relatório no painel principal</td></tr>
+        </tbody>
+      </table>
+      <h3>Manutenção em detalhe</h3>
+      <p>Alterações na página são feitas pedindo ao Claude, com a conta do setor, informando o link da agenda. Ele publica uma nova versão no mesmo endereço, sem perder os dados.</p>
+      <ul>
+        <li><b>Incluir ou trocar colaboradores:</b> os nomes da Agenda ficam na lista do formulário e na constante COLABS; os da aba Tarefas, na constante TCOLABS. Peça ao Claude, que atualiza todos e confere se há registros salvos com o nome antigo.</li>
+        <li><b>Atualizar esta documentação:</b> a cada mudança, peça ao Claude para atualizar as duas partes e baixe o PDF de novo para a pasta do projeto.</li>
+        <li><b>Restaurar uma versão:</b> pelo histórico de versões do artefato. Isso volta a página, não os dados do banco.</li>
+        <li><b>Registro apagado por engano:</b> não há lixeira. Precisa ser cadastrado de novo; os relatórios em CSV salvos na pasta servem de cópia.</li>
+        <li><b>Cópia de segurança:</b> baixar mensalmente o relatório do mês em CSV e salvar na pasta do SharePoint.</li>
+        <li><b>Limite de armazenamento:</b> se aparecer “A agenda atingiu o limite de registros”, apague informações antigas depois de salvá-las em CSV.</li>
+      </ul>
+    </div>
+    <p class="err" id="docErr" hidden></p>
+    <div class="mfoot">
+      <a class="btn" id="docPasta" href="#" target="_blank" rel="noopener" style="margin-right:auto">📁 Abrir pasta na rede</a>
+      <button class="btn" type="button" id="docPdf">📄 Baixar em PDF</button>
+      <button class="btn primary" type="button" id="docFechar">Fechar</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="relOverlay" hidden>
+  <div class="modal wide" role="dialog" aria-labelledby="relTitle">
+    <h2 id="relTitle">Relatório</h2>
+    <div class="relctl">
+      <div class="seg" role="group" aria-label="Período">
+        <button type="button" id="relDia" aria-pressed="true">Do dia</button>
+        <button type="button" id="relMes" aria-pressed="false">Do mês</button>
+        <button type="button" id="relAno" aria-pressed="false">Do ano</button>
+      </div>
+      <div class="relnav"><button class="btn" type="button" id="relPrev" aria-label="Período anterior">‹</button><span class="per" id="relPer" aria-live="polite"></span><button class="btn" type="button" id="relNext" aria-label="Próximo período">›</button></div>
+    </div>
+    <p class="hint" style="margin:0">Use ‹ › para trocar o dia, o mês ou o ano.</p>
+    <div class="relsum" id="relSum"></div>
+    <div class="rellist" id="relList"></div>
+    <p class="err" id="relErr" hidden></p>
+    <div class="mfoot">
+      <button class="btn ghost" type="button" id="relFechar">Fechar</button>
+      <button class="btn" type="button" id="relCsv">Baixar planilha (CSV)</button>
+      <button class="btn primary" type="button" id="relHtml">Baixar para imprimir / PDF</button>
+    </div>
+  </div>
+</div>
+
+<div class="toasts" id="toasts" aria-live="assertive"></div>
+
+<!--
+  Regras dos dados (para quem cadastra pelo chat do Claude):
+  Todo registro novo na coleção "avisos" (reunião ou etapa de programa) precisa do campo
+  "colaborador", com um destes nomes: Colaborador 1, Coordenador, Colaborador 2, Colaborador 3.
+  É obrigatório: se a pessoa não informar quem está cadastrando, pergunte antes de gravar.
+  Reunião: titulo e data também são obrigatórios.
+  Programa: nome do programa, lançamento do edital, encerramento das inscrições e realização (ou imersão) são obrigatórios.
+  Tarefa (coleção "tarefas"): colaborador (responsável), com um destes nomes: Backlog, Colaborador 1, Coordenador, Colaborador 2, Colaborador 3, Colaborador 4, Colaborador 5
+  ("Backlog" = tarefa sem dono, que qualquer pessoa pode pegar; ao pegar, colaborador recebe o nome e pegaEm a data e hora);
+  descricao e inicio (AAAA-MM-DD; se não informado, use a data de hoje) são obrigatórios; prazo (AAAA-MM-DD, não antes do início) é opcional;
+  não há mais campo de quem registra (registradoPor); status começa como "pendente"; criadoEm recebe a data e hora do registro (automática).
+-->
+<script>
+(function(){
+  const $ = id => document.getElementById(id);
+  const WD = ["Seg","Ter","Qua","Qui","Sex","Sáb","Dom"];
+  const WDL = ["Segunda-feira","Terça-feira","Quarta-feira","Quinta-feira","Sexta-feira","Sábado","Domingo"];
+  const MES = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
+  const MESL = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
+  const LEMBRETE_MIN = 30;
+  const BASE_TITLE = "Agenda da Equipe – Formação Profissional";
+
+  const store = {
+    get(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } },
+    set(k,v){ try{ localStorage.setItem(k,v); }catch(e){} },
+    sget(k){ try{ return sessionStorage.getItem(k); }catch(e){ return null; } },
+    sset(k,v){ try{ v==null?sessionStorage.removeItem(k):sessionStorage.setItem(k,v); }catch(e){} }
+  };
+
+  // ---------- datas ----------
+  function ymd(d){ return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
+  function addDays(d,n){ const x=new Date(d); x.setDate(x.getDate()+n); return x; }
+  function parseYmd(s){ const [y,m,d]=s.split("-").map(Number); return new Date(y,m-1,d); }
+  function mondayOf(d){ const x=new Date(d.getFullYear(),d.getMonth(),d.getDate()); x.setDate(x.getDate()-((x.getDay()+6)%7)); return x; }
+  function fmtCurta(s){ const d=parseYmd(s); return WD[(d.getDay()+6)%7]+", "+d.getDate()+" "+MES[d.getMonth()]; }
+  function startOf(a){ if(!a.hora) return null; const d=parseYmd(a.data); const [h,m]=a.hora.split(":").map(Number); d.setHours(h,m,0,0); return d; }
+  function ordena(a,b){ return (a.data||"").localeCompare(b.data||"") || (a.hora||"").localeCompare(b.hora||"") || (a.ordem||0)-(b.ordem||0) || (a.criadoEm||"").localeCompare(b.criadoEm||""); }
+  function ultimoDiaMes(s){ const d=parseYmd(s); return ymd(new Date(d.getFullYear(), d.getMonth()+1, 0)); }
+  function fim(a){ if(!a.data || a.naoPrevisto) return ""; if(a.soMes) return ultimoDiaMes(a.data); return (a.ate && a.ate>a.data) ? a.ate : a.data; }
+  function noDia(a,key){ return !a.soMes && !a.naoPrevisto && !!a.data && a.data<=key && key<=fim(a); }
+  function ddmm(s){ const d=parseYmd(s); return String(d.getDate()).padStart(2,"0")+"/"+String(d.getMonth()+1).padStart(2,"0"); }
+  function mesAno(s){ const d=parseYmd(s); const m=MESL[d.getMonth()]; return m[0].toUpperCase()+m.slice(1)+"/"+d.getFullYear(); }
+  function quando(a){
+    if(a.naoPrevisto) return "Não previsto";
+    if(a.soMes) return mesAno(a.data)+" (dia a definir)";
+    const f=fim(a); if(f!==a.data) return ddmm(a.data)+" a "+ddmm(f)+"/"+parseYmd(f).getFullYear();
+    return fmtCurta(a.data);
+  }
+
+  // cores por evento (na ordem da primeira data)
+  const COR_CLARO=["#1D40A6","#00BE6B","#38ABB2","#5883D0","#FAB529","#8A24FF","#26C2FF","#A0C648"];
+  const COR_ESC=["#5883D0","#00BE6B","#38ABB2","#8FAEEB","#FAB529","#B57BFF","#26C2FF","#A0C648"];
+  function escuro(){ const t=document.documentElement.getAttribute("data-theme"); if(t) return t==="dark"; try{ return matchMedia("(prefers-color-scheme: dark)").matches; }catch(e){ return false; } }
+  let evIdx = new Map();
+  function indexaEventos(){ evIdx=new Map(); for(const a of [...avisos].sort(ordena)){ if(a.evento && !evIdx.has(a.evento)) evIdx.set(a.evento, evIdx.size); }
+    const dl=$("evList"); dl.textContent=""; for(const n of evIdx.keys()){ const o=document.createElement("option"); o.value=n; dl.append(o); } }
+  function corEv(nome){ if(!nome||!evIdx.has(nome)) return null; const p=escuro()?COR_ESC:COR_CLARO; return p[evIdx.get(nome)%p.length]; }
+
+  // ---------- estado ----------
+  let db = null, avisos = [];
+  const gestora = true;
+  let sel = ymd(new Date());
+  let mesRef = new Date(); mesRef.setDate(1);
+  const prevSeen = Number(store.get("agenda:lastSeen") || 0);
+  let lastSeen = prevSeen;
+  let known = null; const mine = new Set();
+  let editingId = null, deletingId = null, formOpen = false;
+  let aba = ["prog","tar"].includes(store.get("agenda:aba")) ? store.get("agenda:aba") : "agenda";
+  let progAno = new Date().getFullYear(), progAnoAuto = true, notas = {};
+  // tarefas
+  let tarefas = [], tarColab = store.get("agenda:tarColab")||"", tarEditId = null, tarDelId = null, tarKnown = null; const mineT = new Set();
+
+  function isNovo(a){ const t=Date.parse(a.criadoEm||""); return !!t && t>lastSeen && lastSeen>0; }
+
+  // ---------- render ----------
+  function render(){ renderCal(); renderDia(); renderProx(); renderModo(); renderBanner(); renderProg(); renderTarefas(); renderAba(); }
+
+  function renderAba(){
+    $("tabAgenda").setAttribute("aria-selected", String(aba==="agenda"));
+    $("tabProg").setAttribute("aria-selected", String(aba==="prog"));
+    $("tabTar").setAttribute("aria-selected", String(aba==="tar"));
+    $("agendaView").hidden = aba!=="agenda"; $("prog").hidden = aba!=="prog"; $("tarView").hidden = aba!=="tar";
+  }
+
+  // ---------- tarefas ----------
+  function dmy(s){ if(!s) return ""; const d=parseYmd(s); return ddmm(s)+"/"+d.getFullYear(); }
+  function dmyIso(iso){ const d=new Date(iso||""); return isNaN(d) ? "—" : dmy(ymd(d)); }
+  function ordTar(a,b){ return (a.inicio||"").localeCompare(b.inicio||"") || (a.criadoEm||"").localeCompare(b.criadoEm||""); }
+  const ATR="__atrasadas";
+  function atrasada(t){ return t.status!=="concluida" && !!t.prazo && t.prazo<ymd(new Date()); }
+
+  function renderTarefas(){
+    const box=$("colabCards"); box.textContent="";
+    if(tarColab===ATR) tarColab=""; // card “Atrasadas” removido
+    for(const c of TCOLABS){
+      const its=tarefas.filter(t=>t.colaborador===c);
+      const pend=its.filter(t=>t.status!=="concluida").length, conc=its.length-pend, atr=its.filter(atrasada).length;
+      const bk=c===BACKLOG;
+      const b=document.createElement("button"); b.type="button"; b.className="card ccard"+(bk?" cbacklog":"");
+      b.setAttribute("aria-pressed", String(c===tarColab));
+      const h=document.createElement("h3"); h.textContent=c;
+      const p=document.createElement("p"); p.className="cnum"; p.textContent = bk ? (pend ? pend+(pend===1?" tarefa disponível":" tarefas disponíveis") : "Nenhuma tarefa disponível") : pend+(pend===1?" pendente":" pendentes")+" · "+conc+(conc===1?" concluída":" concluídas");
+      b.append(h,p);
+      if(atr){ const s=document.createElement("p"); s.className="catr"; s.textContent=atr+(atr===1?" atrasada":" atrasadas"); b.append(s); }
+      b.onclick=()=>{ tarColab=c; store.set("agenda:tarColab",c); renderTarefas(); $("tarDet").scrollIntoView({behavior:"smooth", block:"nearest"}); };
+      box.append(b);
+    }
+    const det=$("tarDet"), ul=$("tarItems"); ul.textContent="";
+    if(tarColab===ATR){
+      $("tarDetTitulo").textContent="Tarefas atrasadas";
+      $("btnNovaTarColab").hidden=true;
+      const atrs=tarefas.filter(atrasada).sort((a,b)=>(a.prazo||"").localeCompare(b.prazo||"") || ordTar(a,b));
+      $("tarDetVazio").hidden = atrs.length>0;
+      $("tarDetVazio").textContent = "Nenhuma tarefa atrasada. Todas as pendentes estão dentro do prazo.";
+      for(const t of atrs) ul.append(itemTarefa(t));
+      return;
+    }
+    if(!TCOLABS.includes(tarColab)){ $("tarDetTitulo").textContent="Demandas"; $("tarDetVazio").textContent="Clique num nome para ver as demandas registradas para essa pessoa."; $("tarDetVazio").hidden=false; $("btnNovaTarColab").hidden=true; return; }
+    $("tarDetTitulo").textContent = tarColab===BACKLOG ? "Backlog: tarefas disponíveis" : "Demandas de "+tarColab;
+    $("btnNovaTarColab").hidden=false; $("btnNovaTarColab").textContent="+ Nova tarefa para "+tarColab;
+    const its=tarefas.filter(t=>t.colaborador===tarColab);
+    const pend=its.filter(t=>t.status!=="concluida").sort(ordTar), conc=its.filter(t=>t.status==="concluida").sort((a,b)=>ordTar(b,a));
+    $("tarDetVazio").hidden = its.length>0;
+    $("tarDetVazio").textContent = tarColab===BACKLOG ? "Nenhuma tarefa no Backlog. Atribua uma tarefa a “Backlog” para deixá-la disponível à equipe." : "Nenhuma demanda registrada para "+tarColab+".";
+    const grupo=(titulo, lista)=>{
+      if(!lista.length) return;
+      const h=document.createElement("li"); h.className="tgrupo"; h.textContent=titulo+" ("+lista.length+")"; ul.append(h);
+      for(const t of lista) ul.append(itemTarefa(t));
+    };
+    grupo(tarColab===BACKLOG ? "Disponíveis" : "Pendentes", pend); grupo("Concluídas", conc);
+  }
+
+  function itemTarefa(t){
+    const li=document.createElement("li"); li.className="item"+(t.status==="concluida"?" tdone":"");
+    const d=document.createElement("div"); d.className="hora"; d.textContent = t.inicio ? ddmm(t.inicio) : "—"; d.title="Data de início";
+    const body=document.createElement("div");
+    const h=document.createElement("h3"); h.textContent=t.descricao||"";
+    if(t.status==="concluida"){ const s=document.createElement("span"); s.className="tag feita"; s.textContent="✓"; s.title="Concluída"; s.setAttribute("aria-label","Concluída"); h.append(s); }
+    else if(atrasada(t)){ const s=document.createElement("span"); s.className="tag atr"; s.textContent="Atrasada"; h.append(s); }
+    const m=document.createElement("div"); m.className="meta";
+    const add=txt=>{ const s=document.createElement("span"); s.textContent=txt; m.append(s); };
+    add((t.colaborador===BACKLOG ? "📥 " : "👤 ")+(t.colaborador||""));
+    if(t.pegaEm && t.colaborador!==BACKLOG) add("📥 Pegou do Backlog em "+dmyIso(t.pegaEm));
+    add("📝 Registrada em "+dmyIso(t.criadoEm));
+    if(t.inicio) add("▶ Início "+dmy(t.inicio));
+    if(t.prazo) add("⏰ Prazo "+dmy(t.prazo));
+    if(t.status==="concluida" && t.concluidaEm){ const s=document.createElement("span"); s.className="okem"; const ck=document.createElement("b"); ck.textContent="✓"; s.append(ck, " Concluída em "+dmyIso(t.concluidaEm)); m.append(s); }
+    const tools=document.createElement("div"); tools.className="tools";
+    const bt=(txt,fn,cls)=>{ const b=document.createElement("button"); b.type="button"; b.textContent=txt; if(cls) b.className=cls; b.onclick=fn; tools.append(b); };
+    if(t.colaborador===BACKLOG && t.status!=="concluida"){
+      const sp=document.createElement("select"); sp.className="pegar"; sp.setAttribute("aria-label","Pegar esta tarefa para um colaborador");
+      const o0=document.createElement("option"); o0.value=""; o0.textContent="✋ Pegar para…"; sp.append(o0);
+      for(const c of TCOLABS){ if(c===BACKLOG) continue; const o=document.createElement("option"); o.textContent=c; sp.append(o); }
+      sp.onchange=()=>{ if(sp.value) pegarTarefa(t, sp.value); };
+      tools.append(sp);
+    }
+    bt(t.status==="concluida"?"Reabrir":"Marcar como concluída", ()=>statusTarefa(t));
+    bt("Editar", ()=>openTarefa(t));
+    bt("Apagar", ()=>{ tarDelId=t.id; $("tarDelText").textContent=t.descricao||""; $("tarDelOverlay").hidden=false; $("tarDelCancel").focus(); }, "del");
+    body.append(h,m,tools); li.append(d,body);
+    return li;
+  }
+
+  function openTarefa(t){
+    tarEditId = t ? t.id : null;
+    $("tarFormTitle").textContent = t ? "Editar tarefa" : "Nova tarefa";
+    $("tarOk").textContent = t ? "Salvar alterações" : "Registrar tarefa";
+    $("tColab").value = t ? (t.colaborador||"") : (TCOLABS.includes(tarColab) ? tarColab : "");
+    $("tDesc").value = t ? (t.descricao||"") : "";
+    $("tInicio").value = t ? (t.inicio||"") : "";
+    $("tPrazo").value = t ? (t.prazo||"") : "";
+    $("tReg").textContent = t ? "Registrada em "+dmyIso(t.criadoEm)+". A data de início e o prazo podem ser alterados conforme a necessidade." : "A data de registro é preenchida automaticamente.";
+    $("tErr").hidden = true;
+    $("tarOverlay").hidden = false; $("tDesc").focus();
+  }
+  function fechaTarefa(){ $("tarOverlay").hidden = true; tarEditId = null; }
+
+  async function salvaTarefa(e){
+    e.preventDefault();
+    const err=msg=>{ $("tErr").textContent=msg; $("tErr").hidden=false; };
+    const colaborador=$("tColab").value, descricao=$("tDesc").value.trim(), inicio=$("tInicio").value, prazo=$("tPrazo").value;
+    if(!TCOLABS.includes(colaborador)){ $("tColab").focus(); return err("Escolha o colaborador responsável."); }
+    if(!descricao){ $("tDesc").focus(); return err("Descreva a demanda."); }
+    if(!inicio){ $("tInicio").focus(); return err("Escolha a data de início da tarefa."); }
+    if(prazo && prazo<inicio){ $("tPrazo").focus(); return err("O prazo não pode ser antes da data de início."); }
+    if(!db) return err("Sem conexão com a agenda. Recarregue a página.");
+    $("tarOk").disabled = true;
+    try{
+      if(tarEditId){
+        await db.collection("tarefas").doc(tarEditId).update({colaborador, descricao, inicio, prazo, editadoEm:new Date().toISOString()});
+        toast("Tarefa atualizada", "Para "+colaborador);
+      } else {
+        const ref=db.collection("tarefas").doc(); mineT.add(ref.id);
+        await ref.set({colaborador, descricao, inicio, prazo, status:"pendente", concluidaEm:"", criadoEm:new Date().toISOString()});
+        toast("Tarefa registrada", "Para "+colaborador+" · início "+dmy(inicio));
+      }
+      tarColab = colaborador; store.set("agenda:tarColab", colaborador);
+      fechaTarefa(); renderTarefas();
+    }catch(x){ err("Não foi possível salvar. Verifique se sua conta pode alterar esta agenda."); }
+    finally{ $("tarOk").disabled = false; }
+  }
+
+  // ---------- registro rápido de tarefas (linhas; grava tudo em "Concluir") ----------
+  let qFixo = ""; // responsável travado quando a caixa é aberta pelo card de um colaborador (ou do Backlog)
+  function abrirLinhas(fixo){
+    qFixo = TCOLABS.includes(fixo) ? fixo : "";
+    $("qTitulo").textContent = qFixo ? "Nova tarefa para "+qFixo : "Nova tarefa";
+    $("qHint").textContent = qFixo
+      ? "Todas as tarefas desta caixa vão para "+qFixo+". O ✓ verde mostra que a linha está completa. Use o “+” para mais linhas. Tudo é salvo quando você clicar em “Concluir”. O início vem com a data de hoje e o prazo é opcional."
+      : "Escreva a tarefa e escolha o colaborador (ou “Backlog”, para deixar disponível à equipe); o ✓ verde mostra que a linha está completa. Use o “+” para mais linhas. Tudo é salvo quando você clicar em “Concluir”. O início vem com a data de hoje e o prazo é opcional.";
+    $("qRows").textContent=""; $("qErr").hidden=true; $("qOk").disabled=false;
+    $("qtar").hidden=false; novaLinha();
+  }
+  function fechaLinhas(){ $("qtar").hidden=true; $("qRows").textContent=""; $("qErr").hidden=true; }
+  function linhaVazia(r){ return !r._desc.value.trim() && (qFixo || !r._sel.value) && !r._pz.value; }
+  function linhaOk(r){ const i=r._ini.value, p=r._pz.value; return !!r._desc.value.trim() && TCOLABS.includes(r._sel.value) && !!i && !(p && p<i); }
+  function marcaLinha(r){ const ok=linhaOk(r); r._st.className="qst"+(ok?" ok":""); r._st.textContent=ok?"✓":""; r._st.title=ok?"Pronta para salvar":""; r.classList.toggle("salva", ok); }
+  function novaLinha(){
+    const r=document.createElement("div"); r.className="qrow";
+    const desc=document.createElement("input"); desc.type="text"; desc.maxLength=2000; desc.placeholder="Descreva a tarefa"; desc.setAttribute("aria-label","Tarefa");
+    const sel=document.createElement("select"); sel.setAttribute("aria-label","Colaborador responsável");
+    const o0=document.createElement("option"); o0.value=""; o0.textContent="Atribuir a…"; sel.append(o0);
+    for(const c of TCOLABS){ const o=document.createElement("option"); o.textContent=c; sel.append(o); }
+    if(qFixo){ sel.value=qFixo; sel.disabled=true; sel.title="Atribuída a "+qFixo; }
+    const ini=document.createElement("input"); ini.type="date"; ini.value=ymd(new Date()); ini.setAttribute("aria-label","Data de início"); ini.title="Data de início";
+    const pz=document.createElement("input"); pz.type="date"; pz.setAttribute("aria-label","Prazo (opcional)"); pz.title="Prazo (opcional)";
+    const st=document.createElement("span"); st.className="qst"; st.setAttribute("aria-hidden","true");
+    r.append(desc,sel,ini,pz,st);
+    Object.assign(r,{_desc:desc,_sel:sel,_ini:ini,_pz:pz,_st:st});
+    for(const el of [desc,sel,ini,pz]){ el.addEventListener("input",()=>marcaLinha(r)); el.addEventListener("change",()=>marcaLinha(r)); }
+    desc.addEventListener("keydown",e=>{ if(e.key==="Enter"){ e.preventDefault(); sel.focus(); } });
+    $("qRows").append(r); desc.focus();
+    return r;
+  }
+  async function concluirLinhas(){
+    const err=m=>{ $("qErr").textContent=m; $("qErr").hidden=false; };
+    $("qErr").hidden=true;
+    const rows=[...$("qRows").children].filter(r=>!linhaVazia(r));
+    if(!rows.length) return fechaLinhas();
+    for(const r of rows){
+      if(!r._desc.value.trim()){ r._desc.focus(); return err("Escreva a tarefa em todas as linhas preenchidas."); }
+      if(!TCOLABS.includes(r._sel.value)){ r._sel.focus(); return err("Escolha o colaborador em todas as linhas."); }
+      if(!r._ini.value){ r._ini.focus(); return err("Escolha a data de início."); }
+      if(r._pz.value && r._pz.value<r._ini.value){ r._pz.focus(); return err("O prazo não pode ser antes da data de início."); }
+    }
+    if(!db) return err("Sem conexão com a agenda. Recarregue a página.");
+    $("qOk").disabled=true; $("qOk").textContent="Salvando…";
+    try{
+      const agora=new Date().toISOString(); let n=0;
+      for(const r of rows){
+        const ref=db.collection("tarefas").doc(); mineT.add(ref.id);
+        await ref.set({colaborador:r._sel.value, descricao:r._desc.value.trim(), inicio:r._ini.value, prazo:r._pz.value, status:"pendente", concluidaEm:"", criadoEm:agora});
+        n++; r.remove();
+      }
+      toast(n===1?"Tarefa registrada":n+" tarefas registradas", [...new Set(rows.map(r=>r._sel.value))].join(", "));
+      fechaLinhas(); renderTarefas();
+    }catch(x){ err("Não foi possível salvar todas as tarefas. As que ficaram na caixa não foram salvas; verifique se sua conta pode alterar esta agenda."); }
+    finally{ $("qOk").disabled=false; $("qOk").textContent="Concluir"; }
+  }
+
+  // ---------- relatório mensal de tarefas (PDF) ----------
+  let rtM = new Date(); rtM.setDate(1);
+  function rtChave(){ return rtM.getFullYear()+"-"+String(rtM.getMonth()+1).padStart(2,"0"); }
+  function rtRotulo(){ const m=MESL[rtM.getMonth()]; return m[0].toUpperCase()+m.slice(1)+"/"+rtM.getFullYear(); }
+  function rtItens(){ const k=rtChave(); return tarefas.filter(t=>t.inicio && t.inicio.slice(0,7)===k).sort(ordTar); }
+  function statusTxt(t){ return t.status==="concluida" ? "Concluída" : (atrasada(t) ? "Atrasada" : "Pendente"); }
+  function rtResumo(its){ const c=its.filter(t=>t.status==="concluida").length, a=its.filter(atrasada).length; return [[its.length,"tarefas no mês"],[its.length-c,"pendentes"],[c,"concluídas"],[a,"atrasadas"]]; }
+  function renderRelTar(){
+    $("rtPer").textContent = rtRotulo(); $("rtErr").hidden = true;
+    const its=rtItens();
+    const sum=$("rtSum"); sum.textContent="";
+    for(const [n,l] of rtResumo(its)){ const d=document.createElement("div"); const b=document.createElement("b"); b.textContent=n; const s=document.createElement("span"); s.textContent=l; d.append(b,s); sum.append(d); }
+    const box=$("rtList"); box.textContent="";
+    if(!its.length){ const p=document.createElement("div"); p.className="vazio"; p.textContent="Nenhuma tarefa com início em "+rtRotulo()+"."; box.append(p); return; }
+    const tb=document.createElement("table");
+    tb.innerHTML="<thead><tr><th>Para</th><th>Demanda</th><th>Início</th><th>Prazo</th><th>Status</th></tr></thead>";
+    const body=document.createElement("tbody");
+    for(const c of TCOLABS) for(const t of its.filter(x=>x.colaborador===c)){
+      const tr=document.createElement("tr");
+      for(const [v,cls] of [[c,""],[t.descricao||"",""],[dmy(t.inicio),"n"],[t.prazo?dmy(t.prazo):"—","n"],[statusTxt(t),""]]){ const td=document.createElement("td"); if(cls) td.className=cls; td.textContent=v; tr.append(td); }
+      body.append(tr);
+    }
+    tb.append(body); box.append(tb);
+  }
+  const scripts = {};
+  function carrega(src){ return scripts[src] || (scripts[src] = new Promise((ok,falha)=>{ const s=document.createElement("script"); s.src=src; s.onload=ok; s.onerror=()=>{ delete scripts[src]; falha(new Error("load")); }; document.head.append(s); })); }
+  async function pdfTarefas(){
+    await carrega("https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js");
+    await carrega("https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js");
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({unit:"mm", format:"a4"});
+    const its = rtItens(), W = doc.internal.pageSize.getWidth(), H = doc.internal.pageSize.getHeight(), M = 14;
+    const MAR=[23,28,102], CINZA=[86,92,138];
+    doc.setFillColor(...MAR); doc.rect(0,0,W,26,"F");
+    doc.setTextColor(255,255,255); doc.setFont("helvetica","normal"); doc.setFontSize(9);
+    doc.text("FORMAÇÃO PROFISSIONAL", M, 10);
+    doc.setFont("helvetica","bold"); doc.setFontSize(16);
+    doc.text("Relatório de tarefas · "+rtRotulo(), M, 19);
+    let y = 36;
+    doc.setTextColor(...MAR); doc.setFontSize(10);
+    const res = rtResumo(its), bw = (W-2*M-9)/4;
+    res.forEach(([n,l],i)=>{ const x=M+i*(bw+3); doc.setDrawColor(220,225,238); doc.roundedRect(x,y-6,bw,16,2,2); doc.setFont("helvetica","bold"); doc.setFontSize(14); doc.setTextColor(...MAR); doc.text(String(n), x+4, y+1); doc.setFont("helvetica","normal"); doc.setFontSize(8); doc.setTextColor(...CINZA); doc.text(l, x+4, y+6); });
+    y += 20;
+    if(!its.length){ doc.setFontSize(11); doc.setTextColor(...CINZA); doc.text("Nenhuma tarefa com início em "+rtRotulo()+".", M, y); }
+    for(const c of TCOLABS){
+      const lista = its.filter(t=>t.colaborador===c);
+      if(!lista.length) continue;
+      if(y > H-40){ doc.addPage(); y = 20; }
+      doc.setFont("helvetica","bold"); doc.setFontSize(12); doc.setTextColor(...MAR);
+      doc.text(c+"  ("+lista.length+(lista.length===1?" tarefa)":" tarefas)"), M, y);
+      doc.autoTable({
+        startY: y+3, margin:{left:M, right:M},
+        head: [["Demanda","Registro","Início","Prazo","Status"]],
+        body: lista.map(t=>[t.descricao||"", dmyIso(t.criadoEm), dmy(t.inicio), t.prazo?dmy(t.prazo):"—", statusTxt(t)+(t.status==="concluida"&&t.concluidaEm?" em "+dmyIso(t.concluidaEm):"")]),
+        styles:{font:"helvetica", fontSize:9, cellPadding:2, textColor:MAR, lineColor:[220,225,238], lineWidth:.2},
+        headStyles:{fillColor:MAR, textColor:255, fontStyle:"bold"},
+        alternateRowStyles:{fillColor:[244,246,251]},
+        columnStyles:{0:{cellWidth:84},1:{cellWidth:22},2:{cellWidth:22},3:{cellWidth:22}},
+        didParseCell: d=>{ if(d.section==="body" && d.column.index===4){ const v=String(d.cell.raw); if(v==="Atrasada"){ d.cell.styles.textColor=[192,38,45]; d.cell.styles.fontStyle="bold"; } else if(v.startsWith("Concluída")) d.cell.styles.textColor=[0,140,80]; } }
+      });
+      y = doc.lastAutoTable.finalY + 10;
+    }
+    const h=new Date(), gerado=dmy(ymd(h))+" às "+String(h.getHours()).padStart(2,"0")+":"+String(h.getMinutes()).padStart(2,"0");
+    const n=doc.getNumberOfPages();
+    for(let i=1;i<=n;i++){ doc.setPage(i); doc.setFont("helvetica","normal"); doc.setFontSize(8); doc.setTextColor(...CINZA);
+      doc.text("Agenda da Equipe – Formação Profissional · gerado em "+gerado, M, H-8); doc.text("Página "+i+" de "+n, W-M, H-8, {align:"right"}); }
+    return doc.output("arraybuffer");
+  }
+  async function baixarRelTar(){
+    const err=m=>{ $("rtErr").textContent=m; $("rtErr").hidden=false; };
+    $("rtErr").hidden=true;
+    let dl=null; try{ dl = window.claude && await window.claude.use("downloads"); }catch(e){}
+    if(!dl) return err("Não é possível baixar arquivos nesta tela. Abra a agenda no Claude pelo navegador do computador.");
+    $("rtPdf").disabled=true; const txt=$("rtPdf").textContent; $("rtPdf").textContent="Gerando PDF…";
+    try{
+      let buf; try{ buf = await pdfTarefas(); }catch(e){ return err("Não foi possível gerar o PDF. Verifique a conexão e tente de novo."); }
+      const nome="relatorio-tarefas-"+rtChave()+".pdf";
+      try{ await dl.save({filename:nome, data:buf}); toast("Relatório baixado", nome); }
+      catch(e){
+        if(e && e.code==="declined") return;
+        if(e && e.code==="rate_limited") return err("Já existe um download aguardando confirmação.");
+        err("Não foi possível baixar o relatório agora.");
+      }
+    } finally { $("rtPdf").disabled=false; $("rtPdf").textContent=txt; }
+  }
+
+  async function pegarTarefa(t, quem){
+    if(!db) return;
+    const agora=new Date().toISOString();
+    try{ await db.collection("tarefas").doc(t.id).update({colaborador:quem, pegaEm:agora, editadoEm:agora}); toast(quem+" pegou uma tarefa do Backlog", t.descricao||""); }
+    catch(x){ toast("Não foi possível pegar a tarefa", "Verifique se sua conta pode alterar esta agenda."); renderTarefas(); }
+  }
+  // ---------- documentação em PDF ----------
+  function limpaPdf(t){ return String(t||"").replace(/→/g,"->").replace(/✓/g,"").replace(/[\u{1F000}-\u{1FAFF}\u{2190}-\u{21FF}\u{2600}-\u{27BF}\u{FE0F}]/gu,"").replace(/\s+/g," ").trim(); }
+  async function pdfDoc(){
+    await carrega("https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js");
+    await carrega("https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js");
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({unit:"mm", format:"a4"});
+    const W = doc.internal.pageSize.getWidth(), H = doc.internal.pageSize.getHeight(), M = 14, LW = W-2*M;
+    const MAR=[23,28,102], CINZA=[86,92,138], TXT=[30,34,80];
+    doc.setFillColor(...MAR); doc.rect(0,0,W,26,"F");
+    doc.setTextColor(255,255,255); doc.setFont("helvetica","normal"); doc.setFontSize(9);
+    doc.text("FORMAÇÃO PROFISSIONAL", M, 10);
+    doc.setFont("helvetica","bold"); doc.setFontSize(16);
+    doc.text("Documentação · Agenda da Equipe", M, 19);
+    let y = 36;
+    const cabe = h=>{ if(y+h > H-16){ doc.addPage(); y = 20; } };
+    const texto = (t, tam, cor, estilo, rec=0)=>{
+      doc.setFont("helvetica", estilo||"normal"); doc.setFontSize(tam); doc.setTextColor(...cor);
+      const linhas = doc.splitTextToSize(t, LW-rec), lh = tam*0.42;
+      for(const l of linhas){ cabe(lh); doc.text(l, M+rec, y); y += lh; }
+    };
+    for(const el of document.querySelectorAll("#docOverlay .docbody > *")){
+      const tag = el.tagName;
+      if(tag==="H2"){
+        if(y > 40){ doc.addPage(); y = 20; }
+        doc.setFillColor(232,238,250); doc.roundedRect(M, y-6, LW, 11, 2, 2, "F");
+        doc.setFont("helvetica","bold"); doc.setFontSize(13.5); doc.setTextColor(...MAR); doc.text(limpaPdf(el.textContent), M+3, y+1.5); y += 11;
+      }
+      else if(tag==="H3"){ y += 3; cabe(12); texto(limpaPdf(el.textContent), 12.5, MAR, "bold"); y += 1; }
+      else if(tag==="P"){
+        texto(limpaPdf(el.textContent), el.classList.contains("meta") ? 8.5 : 10, el.classList.contains("meta") ? CINZA : TXT);
+        for(const a of el.querySelectorAll("a[href]")){ cabe(5); doc.setFont("helvetica","bold"); doc.setFontSize(9); doc.setTextColor(29,64,166); doc.textWithLink("Abrir: "+limpaPdf(a.textContent), M, y, {url:a.href}); y += 4.5; }
+        y += 2;
+      }
+      else if(tag==="UL"){
+        for(const li of el.children){ texto("•  "+limpaPdf(li.textContent), 10, TXT, "normal", 2); y += 1; }
+        y += 1;
+      }
+      else if(tag==="TABLE"){
+        const head=[...el.querySelectorAll("thead th")].map(th=>limpaPdf(th.textContent));
+        const body=[...el.querySelectorAll("tbody tr")].map(tr=>[...tr.children].map(td=>limpaPdf(td.textContent)));
+        cabe(16);
+        doc.autoTable({ startY:y, margin:{left:M,right:M,top:20,bottom:16}, head:[head], body,
+          styles:{font:"helvetica", fontSize:8.5, cellPadding:1.8, textColor:TXT, lineColor:[220,225,238], lineWidth:.2, valign:"top"},
+          headStyles:{fillColor:MAR, textColor:255, fontStyle:"bold"},
+          alternateRowStyles:{fillColor:[244,246,251]},
+          columnStyles:{0:{cellWidth:38, fontStyle:"bold"}} });
+        y = doc.lastAutoTable.finalY + 5;
+      }
+    }
+    const h=new Date(), gerado=dmy(ymd(h))+" às "+String(h.getHours()).padStart(2,"0")+":"+String(h.getMinutes()).padStart(2,"0");
+    const n=doc.getNumberOfPages();
+    for(let i=1;i<=n;i++){ doc.setPage(i); doc.setFont("helvetica","normal"); doc.setFontSize(8); doc.setTextColor(...CINZA);
+      doc.text("Agenda da Equipe – Formação Profissional · documentação gerada em "+gerado, M, H-8); doc.text("Página "+i+" de "+n, W-M, H-8, {align:"right"}); }
+    return doc.output("arraybuffer");
+  }
+  async function baixarDoc(){
+    const err=m=>{ $("docErr").textContent=m; $("docErr").hidden=false; };
+    $("docErr").hidden=true;
+    let dl=null; try{ dl = window.claude && await window.claude.use("downloads"); }catch(e){}
+    if(!dl) return err("Não é possível baixar arquivos nesta tela. Abra a agenda no Claude pelo navegador do computador.");
+    const b=$("docPdf"), txt=b.textContent; b.disabled=true; b.textContent="Gerando PDF…";
+    try{
+      let buf; try{ buf = await pdfDoc(); }catch(e){ return err("Não foi possível gerar o PDF. Verifique a conexão e tente de novo."); }
+      const nome="documentacao-agenda-formacao-profissional-"+ymd(new Date())+".pdf";
+      try{ await dl.save({filename:nome, data:buf}); toast("Documentação baixada", nome+" · salve na pasta do projeto"); }
+      catch(e){
+        if(e && e.code==="declined") return;
+        if(e && e.code==="rate_limited") return err("Já existe um download aguardando confirmação.");
+        err("Não foi possível baixar a documentação agora.");
+      }
+    } finally { b.disabled=false; b.textContent=txt; }
+  }
+
+  async function statusTarefa(t){
+    if(!db) return;
+    const concluir = t.status!=="concluida", agora=new Date().toISOString();
+    try{ await db.collection("tarefas").doc(t.id).update({status: concluir?"concluida":"pendente", concluidaEm: concluir?agora:"", editadoEm: agora}); toast(concluir?"Tarefa concluída":"Tarefa reaberta", t.descricao||""); }
+    catch(x){ toast("Não foi possível alterar a tarefa", "Verifique se sua conta pode alterar esta agenda."); }
+  }
+  function setAba(t){ aba=t; store.set("agenda:aba",t); renderAba(); }
+
+  function renderProg(){
+    $("tabProg").textContent = "Programação "+progAno;
+    $("progTitulo").textContent = "Programação "+progAno;
+    $("btnNovoProg").hidden = !gestora;
+    { const ys=anosComPrograma(); if(ys.length && !ys.includes(progAno)){ progAno = ys.find(y=>y>=progAno) || ys[ys.length-1]; }
+      const temAnt=ys.some(y=>y<progAno), temProx=ys.some(y=>y>progAno);
+      $("anoPrev").hidden=!temAnt; $("anoNext").hidden=!temProx;
+      $("tabProg").textContent = "Programação "+progAno; $("progTitulo").textContent = "Programação "+progAno; }
+    const nota = notas["ano-"+progAno]; $("progNota").textContent = nota||""; $("progNota").hidden = !nota;
+    const box=$("progCards"); box.textContent="";
+    const y=String(progAno), today=ymd(new Date()), grupos=new Map();
+    for(const a of [...avisos].sort(ordena)){
+      if(!a.evento||!a.data) continue;
+      if(a.data.slice(0,4)!==y && fim(a).slice(0,4)!==y) continue;
+      if(!grupos.has(a.evento)) grupos.set(a.evento,[]);
+      grupos.get(a.evento).push(a);
+    }
+    if(!grupos.size){
+      const p=document.createElement("div"); p.className="progvazio";
+      p.textContent = gestora ? "Nenhum evento em "+y+". Para criar, inclua uma informação na Agenda e preencha o campo “Evento / programa”." : "Nenhum evento cadastrado para "+y+".";
+      box.append(p); return;
+    }
+    for(const [nome,itens] of grupos){
+      const card=document.createElement("article"); card.className="card pcard"; card.dataset.ev=nome;
+      const c=corEv(nome); if(c) card.style.setProperty("--evc",c);
+      const head=document.createElement("div"); head.className="phead";
+      const h=document.createElement("h3"); h.textContent=nome; h.title=nome; head.append(h);
+      const locs=[...new Set(itens.map(a=>a.local).filter(Boolean))];
+      const p=document.createElement("p"); p.className="loc"+(locs.length?"":" vazio"); p.textContent="📍 "+(locs.length?locs.join(" · "):"Local a definir"); head.append(p);
+      card.append(head);
+      const ol=document.createElement("ol"); ol.className="etapas"; let marcou=false;
+      for(const a of itens){
+        const f=fim(a), li=document.createElement("li"); let st="";
+        if(a.naoPrevisto){
+          li.className="np";
+          const b=document.createElement("button"); b.type="button";
+          const dt=document.createElement("span"); dt.className="dt"; dt.textContent="Não previsto";
+          const nm=document.createElement("span"); nm.className="nm"; nm.textContent=a.titulo||"";
+          b.append(dt,nm);
+          if(gestora){ b.title="Editar programa"; b.onclick=()=>{ setAba("agenda"); openProg(a.evento); }; } else b.disabled=true;
+          li.append(b); ol.append(li); continue;
+        }
+        if(f<today) li.className="done";
+        else if(!marcou){
+          marcou=true; li.className="next";
+          if(a.data<=today) st = a.soMes ? "Neste mês" : (a.data===f ? "Hoje" : "Em andamento");
+          else { const n=Math.round((parseYmd(a.data)-parseYmd(today))/86400000); st = "Próxima etapa · "+(n===1?"amanhã":"faltam "+n+" dias"); }
+        }
+        const b=document.createElement("button"); b.type="button";
+        const dt=document.createElement("span"); dt.className="dt";
+        dt.textContent = a.soMes ? mesAno(a.data) : (f!==a.data ? ddmm(a.data)+" a "+ddmm(f) : ddmm(a.data));
+        const nm=document.createElement("span"); nm.className="nm"; nm.textContent=a.titulo||"";
+        const wrap=document.createElement("span"); wrap.append(nm);
+        if(st){ const s=document.createElement("span"); s.className="st"; s.textContent=st; wrap.append(s); }
+        b.append(dt,wrap);
+        b.setAttribute("aria-label", (a.titulo||"")+", "+quando(a)+". Abrir na agenda");
+        b.onclick=()=>{ setAba("agenda"); selecionar(a.data); };
+        li.append(b); ol.append(li);
+      }
+      card.append(ol);
+      if(gestora){
+        const add=document.createElement("button"); add.type="button"; add.className="btn sm"; add.textContent="Editar programa";
+        add.onclick=()=>{ setAba("agenda"); openProg(nome); };
+        const pf=document.createElement("div"); pf.className="pfoot"; pf.append(add); card.append(pf);
+      }
+      box.append(card);
+    }
+  }
+
+  function verProg(nome, data){
+    progAno=Number(String(data||ymd(new Date())).slice(0,4)); progAnoAuto=false;
+    setAba("prog"); renderProg();
+    const card=[...document.querySelectorAll("#progCards .pcard")].find(c=>c.dataset.ev===nome);
+    if(!card) return;
+    card.scrollIntoView({behavior:"smooth", block:"center"});
+    card.classList.add("foco"); setTimeout(()=>card.classList.remove("foco"), 2500);
+  }
+
+  function renderCal(){
+    const today = ymd(new Date());
+    const wkIni = ymd(mondayOf(new Date())), wkFim = ymd(addDays(mondayOf(new Date()),6));
+    $("mesTitulo").textContent = MESL[mesRef.getMonth()]+" "+mesRef.getFullYear();
+    const g=$("grid"); g.textContent="";
+    for(const w of WD){ const h=document.createElement("div"); h.className="wd"; h.textContent=w; g.append(h); }
+    const porDia = {};
+    const gIni=ymd(mondayOf(mesRef)), gFim=ymd(addDays(mondayOf(mesRef),41));
+    for(const a of avisos){
+      if(a.soMes||!a.data) continue;
+      const f=fim(a); if(f<gIni||a.data>gFim) continue;
+      let x=parseYmd(a.data>gIni?a.data:gIni);
+      for(let i=0;i<60;i++){ const k=ymd(x); if(k>f||k>gFim) break; (porDia[k]=porDia[k]||[]).push(a); x=addDays(x,1); }
+    }
+    let d = mondayOf(mesRef);
+    for(let i=0;i<42;i++){
+      const key=ymd(d), list=porDia[key]||[];
+      const b=document.createElement("button"); b.type="button";
+      let cls="d";
+      if(d.getMonth()!==mesRef.getMonth()) cls+=" out";
+      if(key<today) cls+=" past";
+      if(key>=wkIni && key<=wkFim) cls+=" week";
+      if(key===today) cls+=" today";
+      if(key===sel) cls+=" sel";
+      b.className=cls;
+      const n=document.createElement("span"); n.textContent=d.getDate(); b.append(n);
+      const dots=document.createElement("span"); dots.className="dots";
+      list.slice(0,3).forEach(a=>{ const s=document.createElement("i"); s.className="dot"; dots.append(s); });
+      const nt=tarefas.filter(t=>t.inicio===key).length;
+      if(nt){ const s=document.createElement("i"); s.className="dot tar"; dots.append(s); }
+      const nf=tarefas.filter(t=>t.prazo===key).length;
+      if(nf){ const s=document.createElement("i"); s.className="dot fim"; dots.append(s); }
+      b.append(dots);
+      b.setAttribute("aria-label", d.getDate()+" de "+MESL[d.getMonth()]+(list.length?", "+list.length+(list.length>1?" informações":" informação"):"")+(nt?", "+nt+(nt>1?" inícios de tarefa":" início de tarefa"):"")+(nf?", "+nf+(nf>1?" prazos finais de tarefa":" prazo final de tarefa"):""));
+      if(key===sel) b.setAttribute("aria-current","date");
+      const k=key; b.onclick=()=>selecionar(k);
+      g.append(b);
+      d=addDays(d,1);
+    }
+    // itens com só o mês definido
+    const sd=$("semDia"); sd.textContent="";
+    const pre=ymd(mesRef).slice(0,7);
+    const sm=avisos.filter(a=>a.soMes && (a.data||"").slice(0,7)===pre).sort(ordena);
+    sd.hidden=!sm.length;
+    if(sm.length){
+      const h=document.createElement("h4"); h.textContent="Em "+MESL[mesRef.getMonth()]+", dia a definir"; sd.append(h);
+      for(const a of sm){
+        const p=document.createElement("div"); p.className="sdi"; const c=corEv(a.evento); if(c) p.style.setProperty("--evc",c);
+        p.textContent=(a.evento?a.evento+" — ":"")+(a.titulo||"");
+        if(gestora){
+          const e=document.createElement("button"); e.type="button"; e.textContent="Editar"; e.onclick=()=>openForm(a);
+          const x=document.createElement("button"); x.type="button"; x.textContent="Apagar"; x.onclick=()=>askDelete(a);
+          p.append(e,x);
+        }
+        sd.append(p);
+      }
+    }
+  }
+
+  function selecionar(key){
+    sel=key; const d=parseYmd(key);
+    if(d.getMonth()!==mesRef.getMonth()||d.getFullYear()!==mesRef.getFullYear()){ mesRef=new Date(d.getFullYear(),d.getMonth(),1); }
+    if(formOpen && !editingId) $("fData").value = key;
+    render();
+  }
+
+  function renderDia(){
+    const today=ymd(new Date()), d=parseYmd(sel);
+    $("diaWd").textContent = WDL[(d.getDay()+6)%7];
+    const h=$("diaTitulo"); h.textContent = d.getDate()+" de "+MESL[d.getMonth()]+" de "+d.getFullYear();
+    if(sel===today){ const t=document.createElement("span"); t.className="tag hoje"; t.textContent="Hoje"; h.append(t); }
+    else if(sel<today){ const t=document.createElement("span"); t.className="tag passou"; t.textContent="Passou"; h.append(t); }
+    $("btnAdd").hidden = !gestora || formOpen;
+    $("avisoForm").hidden = !(gestora && formOpen);
+
+    const ul=$("items"); ul.textContent="";
+    const list=avisos.filter(a=>noDia(a,sel)).sort(ordena);
+    renderDiaTarefas();
+    if(!list.length && $("diaTar").hidden){
+      const li=document.createElement("li"); li.className="emptyday";
+      li.textContent = gestora ? "Nada registrado neste dia. Use “+ Incluir informação”." : (sel<today ? "Nada foi registrado neste dia." : "Nenhuma informação para este dia.");
+      ul.append(li);
+    }
+    for(const a of list){
+      const li=document.createElement("li"); const novo=isNovo(a);
+      li.className="item"+(novo?" novo":"");
+      const c=corEv(a.evento); if(c) li.style.setProperty("--evc",c);
+      const periodo = fim(a)!==a.data;
+      const hr=document.createElement("div"); hr.className="hora"+(a.hora?"":" todo"); hr.textContent=a.hora||(periodo?"Período":"Dia todo");
+      const body=document.createElement("div");
+      if(a.evento){ const ev=document.createElement("div"); ev.className="ev clic"; ev.textContent=a.evento; ev.title="Ver na Programação"; ev.onclick=()=>verProg(a.evento, a.data); body.append(ev); }
+      const h3=document.createElement("h3"); h3.textContent=a.titulo||"";
+      if(a.evento){ h3.classList.add("clic"); h3.title="Ver na Programação"; h3.onclick=()=>verProg(a.evento, a.data); }
+      if(novo){ const b=document.createElement("span"); b.className="badge"; b.textContent="Novo"; h3.append(b); }
+      body.append(h3);
+      if(periodo||a.local||a.colaborador){
+        const m=document.createElement("div"); m.className="meta";
+        if(periodo){ const s=document.createElement("span"); s.textContent="🗓 "+quando(a); m.append(s); }
+        if(a.local){ const s=document.createElement("span"); s.textContent="📍 "+a.local; m.append(s); }
+        if(a.colaborador){ const s=document.createElement("span"); s.textContent="👤 "+a.colaborador; m.append(s); }
+        body.append(m);
+      }
+      if(a.descricao){ const p=document.createElement("p"); p.textContent=a.descricao; body.append(p); }
+      if(gestora){
+        const tools=document.createElement("div"); tools.className="tools";
+        const e=document.createElement("button"); e.type="button"; e.textContent="Editar"; e.onclick=()=>openForm(a);
+        const x=document.createElement("button"); x.type="button"; x.className="del"; x.textContent="Apagar"; x.onclick=()=>askDelete(a);
+        const w=document.createElement("a"); w.className="wa"; w.textContent="Enviar no WhatsApp"; ligaWa(w, waTexto([a], false));
+        if(a.evento){ const v=document.createElement("button"); v.type="button"; v.textContent="Ver na Programação"; v.onclick=()=>verProg(a.evento, a.data); tools.append(v); }
+        tools.append(w,e,x); body.append(tools);
+      }
+      li.append(hr,body); ul.append(li);
+    }
+    const wd=$("btnWaDia"); wd.hidden = !gestora || formOpen || list.length<2;
+    if(!wd.hidden) ligaWa(wd, waTexto(list, true));
+  }
+
+  // tarefas que começam no dia: só o nome do colaborador e a quantidade (sem o conteúdo)
+  function renderDiaTarefas(){
+    const box=$("diaTar"); box.textContent="";
+    const tl=tarefas.filter(t=>t.inicio===sel || t.prazo===sel);
+    box.hidden=!tl.length;
+    if(!tl.length) return;
+    const h=document.createElement("h4"); h.textContent="Tarefas"; box.append(h);
+    const nomes=[...TCOLABS, ...new Set(tl.map(t=>t.colaborador).filter(c=>c && !TCOLABS.includes(c)))];
+    for(const c of nomes){
+      const n=tl.filter(t=>t.colaborador===c && t.inicio===sel).length;
+      const f=tl.filter(t=>t.colaborador===c && t.prazo===sel).length;
+      if(!n && !f) continue;
+      const b=document.createElement("button"); b.type="button"; b.className="tchip"+(n?"":" fim");
+      const nm=document.createElement("b"); nm.textContent=c;
+      b.append(nm);
+      const partes=[];
+      if(n){ const tx=document.createElement("span"); tx.textContent = n===1 ? "início de tarefa" : n+" inícios de tarefa"; b.append(tx); partes.push(tx.textContent); }
+      if(f){ const tx=document.createElement("span"); tx.className="pz"; tx.textContent = f===1 ? "prazo final de tarefa" : f+" prazos finais de tarefa"; b.append(tx); partes.push(tx.textContent); }
+      const ar=document.createElement("span"); ar.className="ir"; ar.textContent="Ver tarefas →";
+      b.append(ar);
+      b.setAttribute("aria-label", c+", "+partes.join(" e ")+". Ver tarefas de "+c);
+      b.onclick=()=>verTarefasDe(c);
+      box.append(b);
+    }
+  }
+  function verTarefasDe(c){
+    tarColab=c; store.set("agenda:tarColab",c);
+    setAba("tar"); renderTarefas();
+    $("tarDet").scrollIntoView({behavior:"smooth", block:"start"});
+  }
+
+  // ---------- WhatsApp (abre o WhatsApp da gestora com a mensagem pronta) ----------
+  function dataLonga(s){ const d=parseYmd(s); return WDL[(d.getDay()+6)%7]+", "+String(d.getDate()).padStart(2,"0")+"/"+String(d.getMonth()+1).padStart(2,"0"); }
+  function quandoWa(a){
+    if(a.soMes) return mesAno(a.data)+" (dia a definir)";
+    const f=fim(a); if(f!==a.data) return "de "+dataLonga(a.data)+" a "+dataLonga(f)+"/"+parseYmd(f).getFullYear();
+    return dataLonga(a.data)+"/"+parseYmd(a.data).getFullYear()+" – "+(a.hora||"dia todo");
+  }
+  function waTexto(list, resumo){
+    const linhas=["📅 *Agenda da Equipe – Formação Profissional*"];
+    if(resumo){
+      linhas.push("*"+dataLonga(sel)+"*","");
+      for(const a of list){
+        linhas.push("• "+(a.hora||(fim(a)!==a.data?"Período":"Dia todo"))+" – "+(a.evento?a.evento+": ":"")+"*"+(a.titulo||"")+"*");
+        if(fim(a)!==a.data) linhas.push("  🗓 "+quandoWa(a));
+        if(a.local) linhas.push("  📍 "+a.local);
+        if(a.descricao) linhas.push("  "+a.descricao);
+      }
+    } else {
+      const a=list[0];
+      linhas.push("");
+      if(a.evento) linhas.push("*"+a.evento+"*", a.titulo||""); else linhas.push("*"+(a.titulo||"")+"*");
+      linhas.push("🗓 "+quandoWa(a));
+      if(a.local) linhas.push("📍 "+a.local);
+      if(a.descricao) linhas.push("",a.descricao);
+    }
+    return linhas.join("\n");
+  }
+  function ligaWa(el, texto){
+    el.href="https://api.whatsapp.com/send?text="+encodeURIComponent(texto);
+    el.target="_blank"; el.rel="noopener";
+    el.onclick=()=>{
+      try{ navigator.clipboard && navigator.clipboard.writeText(texto).catch(()=>{}); }catch(e){}
+      toast("Abrindo o WhatsApp…","Escolha o grupo da equipe e envie. A mensagem também foi copiada: se o WhatsApp não abrir, cole no grupo (Ctrl+V).");
+    };
+  }
+
+  function renderProx(){
+    const today=ymd(new Date()); const ul=$("proxList"); ul.textContent="";
+    const list=avisos.filter(a=>a.data && fim(a)>=today).sort(ordena).slice(0,6);
+    if(!list.length){ const li=document.createElement("li"); li.className="vazio"; li.textContent="Nada programado por enquanto."; ul.append(li); return; }
+    for(const a of list){
+      const li=document.createElement("li"); const b=document.createElement("button"); b.type="button";
+      const w=document.createElement("span"); w.className="when";
+      w.textContent = a.soMes ? mesAno(a.data) : (a.data<=today ? (fim(a)!==a.data?"Até "+ddmm(fim(a)):"Hoje") : fmtCurta(a.data))+(a.hora?" · "+a.hora:"");
+      const t=document.createElement("span"); t.className="t";
+      if(a.evento){ const ev=document.createElement("span"); ev.className="ev"; ev.textContent=a.evento; const c=corEv(a.evento); if(c) ev.style.setProperty("--evc",c); t.append(ev); }
+      t.append(document.createTextNode(a.titulo||""));
+      b.append(w,t); b.onclick=()=>selecionar(a.data<today && !a.soMes ? today : a.data); li.append(b); ul.append(li);
+    }
+  }
+
+  function renderModo(){}
+
+  function renderBanner(){
+    const n = avisos.filter(isNovo).length;
+    $("banner").hidden = n===0;
+    $("bannerText").textContent = n===1 ? "A coordenação incluiu 1 informação nova desde sua última visita." : "A coordenação incluiu "+n+" informações novas desde sua última visita.";
+    document.title = n ? "("+n+") "+BASE_TITLE : BASE_TITLE;
+  }
+
+  // ---------- alertas ----------
+  function toast(title, sub){
+    const el=document.createElement("div"); el.className="toast"; el.setAttribute("role","status");
+    const txt=document.createElement("div"); const b=document.createElement("b"); b.textContent=title; txt.append(b);
+    if(sub){ const s=document.createElement("small"); s.textContent=sub; txt.append(s); }
+    const x=document.createElement("button"); x.type="button"; x.setAttribute("aria-label","Fechar"); x.textContent="×"; x.onclick=()=>el.remove();
+    el.append(txt,x); $("toasts").append(el);
+    setTimeout(()=>el.remove(), 15000);
+  }
+  function browserNotify(title, body){
+    try{ if("Notification" in window && Notification.permission==="granted"){ new Notification(title,{body}); } }catch(e){}
+  }
+  function alertar(title, sub){ toast(title, sub); browserNotify(title, sub||""); }
+
+  function checkLembretes(){
+    const now = Date.now();
+    for(const a of avisos){
+      const s = startOf(a); if(!s) continue;
+      const diff = s.getTime()-now;
+      if(diff>0 && diff<=LEMBRETE_MIN*60000){
+        const k="agenda:lembrete:"+a.id+":"+a.data+"T"+a.hora;
+        if(store.get(k)) continue;
+        store.set(k,"1");
+        alertar("Em "+Math.max(1,Math.round(diff/60000))+" min: "+a.titulo, fmtCurta(a.data)+" às "+a.hora);
+      }
+    }
+  }
+  setInterval(checkLembretes, 30000);
+
+  // ---------- formulário inline: Reunião ou Programação ----------
+  const ETAPAS = [
+    {k:"lanc",  campo:"pLanc",  titulo:"Lançamento do edital e inscrições", ordem:1},
+    {k:"enc",   campo:"pEnc",   titulo:"Encerramento das inscrições", ordem:2},
+    {k:"div",   campo:"pDiv",   titulo:"Divulgação dos selecionados", ordem:3},
+    {k:"aulas", campo:"pAulas", titulo:"Início das aulas online", ordem:4},
+    {k:"imer",  campo:"pImer",  fimCampo:"pImerAte", titulo:"Imersão presencial", ordem:5},
+    {k:"real",  campo:"pReal",  fimCampo:"pRealAte", titulo:"Realização", ordem:6}
+  ];
+  function etapaDe(a){
+    if(a.etapa) return a.etapa;
+    const t=(a.titulo||"").toLowerCase();
+    if(t.startsWith("lançamento")) return "lanc";
+    if(t.startsWith("encerramento")) return "enc";
+    if(t.startsWith("divulgação")) return "div";
+    if(t.startsWith("início das aulas")) return "aulas";
+    if(t.startsWith("imersão")) return "imer";
+    if(t.startsWith("realização")) return "real";
+    return null;
+  }
+  const COLABS=["Colaborador 1","Coordenador","Colaborador 2","Colaborador 3"];
+  const BACKLOG="Backlog"; // fila de tarefas que qualquer pessoa pode pegar
+  const TCOLABS=[BACKLOG,...COLABS,"Colaborador 4","Colaborador 5"]; // nomes da aba Tarefas (Backlog funciona como um responsável)
+  let formTipo="reu", progOrig=null, editOrig=null;
+  function setTipo(t){
+    formTipo=t;
+    $("tipoReu").setAttribute("aria-pressed", String(t==="reu")); $("tipoProg").setAttribute("aria-pressed", String(t==="prog"));
+    $("reuFields").hidden = t!=="reu"; $("progFields").hidden = t!=="prog";
+    $("formTitle").textContent = progOrig ? "Editar programa" : editingId ? "Editar informação" : (t==="prog" ? "Novo programa" : "Nova reunião");
+    $("formErr").hidden=true;
+  }
+  $("tipoReu").onclick=()=>{ setTipo("reu"); $("fTitulo").focus(); };
+  $("tipoProg").onclick=()=>{ setTipo("prog"); $("pNome").focus(); };
+  $("tipoTar").onclick=()=>abrirLinhas();
+  function limpaProg(){ $("pNome").value=""; $("pLocal").value=""; for(const e of ETAPAS){ $(e.campo).value=""; if(e.fimCampo) $(e.fimCampo).value=""; } }
+  function irPara(d){ if(d && d!==sel){ sel=d; mesRef=new Date(parseYmd(d).getFullYear(), parseYmd(d).getMonth(), 1); renderCal(); } }
+
+  function openForm(a){
+    if(a && a.evento) return openProg(a.evento);
+    editingId = a ? a.id : null; editOrig=a||null; progOrig=null; formOpen = true;
+    if(a) irPara(a.data);
+    $("formOk").textContent = a ? "Salvar alterações" : "Publicar para a equipe";
+    $("tipoSeg").hidden = !!a; $("progDel").hidden = true;
+    $("fData").value = a ? a.data : sel;
+    $("fHora").value = a ? (a.hora||"") : "";
+    $("fTitulo").value = a ? (a.titulo||"") : "";
+    $("fDesc").value = a ? (a.descricao||"") : "";
+    $("fColab").value = a && COLABS.includes(a.colaborador) ? a.colaborador : "";
+    limpaProg(); setTipo("reu");
+    renderDia(); $("fTitulo").focus();
+  }
+  function itensPrograma(nome){ return avisos.filter(a=>a.evento===nome); }
+  function openProg(nome){
+    editingId=null; editOrig=null; progOrig=nome||null; formOpen=true;
+    $("formOk").textContent = nome ? "Salvar programa" : "Publicar para a equipe";
+    $("tipoSeg").hidden = !!nome; $("progDel").hidden = !nome;
+    limpaProg(); $("pNome").value = nome||""; $("fColab").value="";
+    if(nome){
+      const ca=(itensPrograma(nome).find(a=>COLABS.includes(a.colaborador))||{}).colaborador; if(ca) $("fColab").value=ca;
+      const its=itensPrograma(nome);
+      for(const a of its){
+        const e=ETAPAS.find(x=>x.k===etapaDe(a)); if(!e || a.naoPrevisto || !a.data) continue;
+        { $(e.campo).value=a.data; if(e.fimCampo) $(e.fimCampo).value = (a.ate && a.ate>a.data) ? a.ate : ""; }
+      }
+      $("pLocal").value = (its.find(a=>a.local)||{}).local||"";
+      const first=its.filter(a=>a.data && !a.naoPrevisto).sort(ordena)[0];
+      if(first) irPara(first.data);
+    }
+    $("fTitulo").value=""; $("fDesc").value=""; $("fHora").value=""; $("fData").value=sel;
+    setTipo("prog");
+    renderDia(); $("pNome").focus();
+  }
+  function closeForm(){ formOpen=false; editingId=null; editOrig=null; progOrig=null; renderDia(); }
+  $("btnAdd").onclick = ()=>openForm(null);
+  $("formCancel").onclick = closeForm;
+  const errMsg = e => e && e.code==="quota_exceeded" ? "A agenda atingiu o limite de registros. Apague informações antigas e tente de novo." : "Não foi possível salvar. Verifique a conexão e tente de novo.";
+
+  $("avisoForm").addEventListener("submit", async ev=>{
+    ev.preventDefault();
+    const err = m=>{ $("formErr").textContent=m; $("formErr").hidden=false; };
+    if(!db) return err("A agenda não está conectada. Recarregue a página.");
+    const colaborador=$("fColab").value;
+    if(!COLABS.includes(colaborador)){ $("fColab").focus(); return err("Selecione o nome do colaborador."); }
+    if(formTipo==="prog") return salvarPrograma(err, colaborador);
+    const data=$("fData").value, hora=$("fHora").value;
+    const titulo=$("fTitulo").value.trim(), descricao=$("fDesc").value.trim();
+    if(!titulo) return err("Escreva a informação.");
+    if(!data) return err("Escolha a data.");
+    $("formOk").disabled = true;
+    try{
+      if(editingId){
+        await db.collection("avisos").doc(editingId).update({data,hora,titulo,descricao,colaborador,editadoEm:new Date().toISOString()});
+        toast("Alteração salva", titulo);
+      } else {
+        const ref = db.collection("avisos").doc(); mine.add(ref.id);
+        await ref.set({data,hora,titulo,descricao,colaborador,evento:"",local:"",ate:"",soMes:false,naoPrevisto:false,tipo:"reuniao",criadoEm:new Date().toISOString()});
+        toast("Publicado para a equipe", titulo);
+      }
+      formOpen=false; editingId=null; editOrig=null; selecionar(data);
+    } catch(e){ err(errMsg(e)); }
+    finally { $("formOk").disabled = false; }
+  });
+
+  async function salvarPrograma(err, colaborador){
+    const nome=$("pNome").value.trim(), local=$("pLocal").value.trim();
+    if(!nome) return err("Escreva o nome do programa.");
+    if(nome!==progOrig && avisos.some(a=>a.evento===nome)) return err("Já existe um programa com esse nome. Para mudar as datas dele, use “Editar programa” na aba Programação.");
+    const v={};
+    for(const e of ETAPAS){
+      let ini=$(e.campo).value.trim(), f=e.fimCampo ? $(e.fimCampo).value : "";
+      if(f && !ini) return err("Em “"+e.titulo+"”, preencha também a data de início.");
+      if(f && f<ini) return err("Em “"+e.titulo+"”, a data final precisa ser depois da inicial.");
+      if(f===ini) f="";
+      v[e.k]={ini,f};
+    }
+    if(!v.lanc.ini) return err("Preencha a data de lançamento do edital e inscrições.");
+    if(!v.enc.ini) return err("Preencha a data de encerramento das inscrições.");
+    if(v.enc.ini < v.lanc.ini) return err("O encerramento das inscrições precisa ser depois do lançamento.");
+    if(!v.real.ini && !v.imer.ini) return err("Preencha a Realização (ou a Imersão presencial, para programas com imersão).");
+    const existentes = progOrig ? itensPrograma(progOrig) : [];
+    const agora=new Date().toISOString(), col=db.collection("avisos"), ops=[];
+    for(const e of ETAPAS){
+      const doc=existentes.find(a=>etapaDe(a)===e.k), x=v[e.k];
+      if(x.ini){
+        // etapas antigas cadastradas só com o mês (ex.: Março/2027) continuam assim enquanto a data não for trocada
+        const manterMes = !!(doc && doc.soMes && x.ini===doc.data);
+        const campos={evento:nome, etapa:e.k, data:x.ini, ate:manterMes?"":x.f, soMes:manterMes, naoPrevisto:false, hora:"",
+          local:(e.k==="real"||e.k==="imer") ? local : "", ordem:e.ordem, tipo:"programacao", colaborador};
+        if(doc) ops.push(()=>col.doc(doc.id).update(Object.assign({editadoEm:agora}, campos)));
+        else { const ref=col.doc(); mine.add(ref.id); ops.push(()=>ref.set(Object.assign({titulo:e.titulo, descricao:"", criadoEm:agora}, campos))); }
+      } else if(doc){
+        if(doc.naoPrevisto){ if(nome!==progOrig) ops.push(()=>col.doc(doc.id).update({evento:nome, editadoEm:agora})); }
+        else ops.push(()=>col.doc(doc.id).delete());
+      }
+    }
+    for(const a of existentes){ if(!etapaDe(a) && nome!==progOrig) ops.push(()=>col.doc(a.id).update({evento:nome, editadoEm:agora})); }
+    $("formOk").disabled=true;
+    try{
+      for(const op of ops) await op();
+      toast(progOrig ? "Programa atualizado" : "Programa publicado para a equipe", nome);
+      formOpen=false; progOrig=null;
+      progAno=Number(v.lanc.ini.slice(0,4)); progAnoAuto=false;
+      selecionar(v.lanc.ini);
+    } catch(e){ err(errMsg(e)+" Parte das etapas pode ter sido salva; confira na aba Programação."); }
+    finally{ $("formOk").disabled=false; }
+  }
+
+  let apagandoProg=null;
+  $("progDel").onclick = ()=>{
+    if(!progOrig) return;
+    apagandoProg=progOrig; deletingId=null;
+    $("delTitle").textContent="Apagar este programa?";
+    const n=itensPrograma(progOrig).length;
+    $("delText").textContent=progOrig+" — "+(n===1?"a etapa sai":"as "+n+" etapas saem")+" da agenda e da Programação.";
+    $("delOverlay").hidden=false;
+  };
+
+  function askDelete(a){ apagandoProg=null; $("delTitle").textContent="Apagar esta informação?"; deletingId=a.id; $("delText").textContent = quando(a)+(a.hora?" às "+a.hora:"")+" — "+(a.evento?a.evento+": ":"")+a.titulo; $("delOverlay").hidden=false; }
+  $("delCancel").onclick = ()=>{ $("delOverlay").hidden=true; deletingId=null; apagandoProg=null; };
+  $("delOk").onclick = async ()=>{
+    if(apagandoProg && db){
+      const nome=apagandoProg, its=itensPrograma(nome);
+      try{ for(const a of its) await db.collection("avisos").doc(a.id).delete(); toast("Programa apagado", nome); formOpen=false; progOrig=null; renderDia(); }
+      catch(e){ toast("Não foi possível apagar todo o programa","Tente de novo."); }
+      $("delOverlay").hidden=true; apagandoProg=null; return;
+    }
+    if(!deletingId||!db) return;
+    try{ await db.collection("avisos").doc(deletingId).delete(); toast("Informação apagada"); }
+    catch(e){ toast("Não foi possível apagar","Tente de novo."); }
+    $("delOverlay").hidden=true; deletingId=null;
+  };
+
+  // ---------- relatório (área da coordenação) ----------
+  let relModo = "dia", relD = null, relM = null, relY = null;
+  function dataBR(s){ const d=parseYmd(s); return String(d.getDate()).padStart(2,"0")+"/"+String(d.getMonth()+1).padStart(2,"0")+"/"+d.getFullYear(); }
+  function relDados(){
+    if(relModo==="dia"){
+      const d=parseYmd(relD);
+      return { titulo:"Relatório do dia", periodo: WDL[(d.getDay()+6)%7]+", "+d.getDate()+" de "+MESL[d.getMonth()]+" de "+d.getFullYear(),
+        arq:"dia-"+relD, itens: avisos.filter(a=>noDia(a,relD)).sort(ordena) };
+    }
+    if(relModo==="ano"){
+      const ya=String(relY);
+      return { titulo:"Relatório do ano", periodo: ya, arq:"ano-"+ya,
+        itens: avisos.filter(a=>a.data && (a.data.slice(0,4)===ya || (fim(a)||"").slice(0,4)===ya)).sort(ordena) };
+    }
+    const y=relM.getFullYear(), m=relM.getMonth(), pre=y+"-"+String(m+1).padStart(2,"0");
+    const ini=pre+"-01", fimM=ultimoDiaMes(ini);
+    return { titulo:"Relatório do mês", periodo: MESL[m]+" de "+y, arq:"mes-"+pre, itens: avisos.filter(a=>a.data && a.data<=fimM && fim(a)>=ini).sort(ordena) };
+  }
+  function relResumo(r){
+    const dias=new Set(r.itens.map(a=>a.data)).size, comHora=r.itens.filter(a=>a.hora).length;
+    if(relModo==="ano"){
+      const evs=new Set(r.itens.map(a=>a.evento).filter(Boolean)).size;
+      return [[r.itens.length, r.itens.length===1?"informação":"informações"],[evs, evs===1?"evento":"eventos"],[dias, dias===1?"dia com registro":"dias com registro"],[comHora,"com horário"]];
+    }
+    return [[r.itens.length, r.itens.length===1?"informação":"informações"],[dias, dias===1?"dia com registro":"dias com registro"],[comHora,"com horário"],[r.itens.length-comHora,"dia todo"]];
+  }
+  function renderRel(){
+    const r=relDados();
+    $("relDia").setAttribute("aria-pressed", String(relModo==="dia")); $("relMes").setAttribute("aria-pressed", String(relModo==="mes")); $("relAno").setAttribute("aria-pressed", String(relModo==="ano"));
+    $("relTitle").textContent=r.titulo; $("relPer").textContent=r.periodo; $("relErr").hidden=true;
+    const sum=$("relSum"); sum.textContent="";
+    for(const [n,l] of relResumo(r)){ const d=document.createElement("div"); const b=document.createElement("b"); b.textContent=n; const s=document.createElement("span"); s.textContent=l; d.append(b,s); sum.append(d); }
+    const box=$("relList"); box.textContent="";
+    if(!r.itens.length){ const p=document.createElement("div"); p.className="vazio"; p.textContent="Nenhuma informação registrada neste período."; box.append(p); return; }
+    const t=document.createElement("table"); t.innerHTML="<thead><tr><th>Data</th><th>Horário</th><th>Informação</th></tr></thead>";
+    const tb=document.createElement("tbody");
+    for(const a of r.itens){
+      const tr=document.createElement("tr");
+      const c1=document.createElement("td"); c1.className="n"; c1.textContent=quando(a);
+      const c2=document.createElement("td"); c2.className="n"; c2.textContent=a.hora||(fim(a)!==a.data?"Período":"Dia todo");
+      const c3=document.createElement("td");
+      if(a.evento){ const ev=document.createElement("small"); ev.textContent=a.evento; c3.append(ev); }
+      c3.append(document.createTextNode(a.titulo||""));
+      if(a.local){ const sm=document.createElement("small"); sm.textContent="📍 "+a.local; c3.append(sm); }
+      if(a.descricao){ const sm=document.createElement("small"); sm.textContent=a.descricao; c3.append(sm); }
+      if(a.colaborador){ const sm=document.createElement("small"); sm.textContent="👤 Cadastrado por "+a.colaborador; c3.append(sm); }
+      tr.append(c1,c2,c3); tb.append(tr);
+    }
+    t.append(tb); box.append(t);
+  }
+  function esc(x){ return String(x==null?"":x).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+  function relHtml(r){
+    const h=new Date();
+    const gerado=dataBR(ymd(h))+" às "+String(h.getHours()).padStart(2,"0")+":"+String(h.getMinutes()).padStart(2,"0");
+    const linhas=r.itens.map(a=>"<tr><td>"+esc(quando(a))+"</td><td>"+esc(a.hora||(fim(a)!==a.data?"Período":"Dia todo"))+"</td><td>"+(a.evento?"<span>"+esc(a.evento)+"</span><br>":"")+"<b>"+esc(a.titulo)+"</b>"+(a.local?"<br><span>Local: "+esc(a.local)+"</span>":"")+(a.descricao?"<br><span>"+esc(a.descricao).split("\n").join("<br>")+"</span>":"")+(a.colaborador?"<br><span>Cadastrado por: "+esc(a.colaborador)+"</span>":"")+"</td></tr>").join("");
+    const resumo=relResumo(r).map(x=>"<div><b>"+x[0]+"</b>"+esc(x[1])+"</div>").join("");
+    const css="body{font-family:'Segoe UI',Arial,sans-serif;color:#171C66;margin:32px;font-size:14px}h1{margin:0;font-size:22px}h2{margin:2px 0 16px;font-size:15px;font-weight:500;color:#1D40A6}"+
+      ".sum{display:flex;gap:10px;margin:0 0 18px}.sum div{border:1px solid #d9e0dd;border-radius:8px;padding:8px 12px;font-size:12px;color:#5d6b66}.sum b{display:block;font-size:20px;color:#16201d}"+
+      "table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:8px;border-bottom:1px solid #d9e0dd;vertical-align:top}th{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:#5d6b66}td:nth-child(-n+2){white-space:nowrap}td span{color:#5d6b66}"+
+      "footer{margin-top:20px;font-size:11px;color:#5d6b66}@media print{body{margin:12mm}footer .dica{display:none}}";
+    return "<!doctype html><html lang='pt-BR'><head><meta charset='utf-8'><title>"+esc(r.titulo+" – "+r.periodo)+"</title><style>"+css+"</style></head><body>"+
+      "<h1>Agenda da Equipe – Formação Profissional</h1><h2>"+esc(r.titulo)+": "+esc(r.periodo)+"</h2><div class='sum'>"+resumo+"</div>"+
+      (r.itens.length?"<table><thead><tr><th>Data</th><th>Horário</th><th>Informação</th></tr></thead><tbody>"+linhas+"</tbody></table>":"<p>Nenhuma informação registrada neste período.</p>")+
+      "<footer>Gerado em "+gerado+".<span class='dica'> Para salvar em PDF: Ctrl+P → Salvar como PDF.</span></footer></body></html>";
+  }
+  function relCsv(r){
+    const q=v=>'"'+String(v==null?"":v).split('"').join('""')+'"';
+    const rows=[["Data inicial","Data final","Dia da semana","Horário","Evento","Informação","Local","Detalhes","Colaborador","Registrado em"]];
+    for(const a of r.itens){
+      const d=parseYmd(a.data);
+      const semDia = a.soMes || a.naoPrevisto;
+      rows.push([semDia?quando(a):dataBR(a.data), semDia?"":(fim(a)!==a.data?dataBR(fim(a)):""), semDia?"":WDL[(d.getDay()+6)%7],
+        a.hora||(fim(a)!==a.data?"Período":"Dia todo"), a.evento, a.titulo, a.local, a.descricao, a.colaborador, a.criadoEm?new Date(a.criadoEm).toLocaleString("pt-BR"):""]);
+    }
+    return "﻿"+rows.map(x=>x.map(q).join(";")).join("\r\n");
+  }
+  async function baixar(tipo){
+    const r=relDados(); const err=m=>{ $("relErr").textContent=m; $("relErr").hidden=false; };
+    let dl=null; try{ dl = window.claude && await window.claude.use("downloads"); }catch(e){}
+    if(!dl) return err("Não é possível baixar arquivos nesta tela. Abra a agenda no Claude pelo navegador do computador.");
+    const nome="relatorio-agenda-"+r.arq+"."+tipo;
+    try{ await dl.save({filename:nome, data: tipo==="csv"?relCsv(r):relHtml(r)}); toast("Relatório baixado", nome); }
+    catch(e){
+      if(e && e.code==="declined") return;
+      if(e && e.code==="rate_limited") return err("Já existe um download aguardando confirmação.");
+      err("Não foi possível baixar o relatório agora.");
+    }
+  }
+  $("btnRel").onclick = ()=>{ relModo="dia"; relD=sel; relM=new Date(mesRef.getFullYear(), mesRef.getMonth(), 1); relY=mesRef.getFullYear(); renderRel(); $("relOverlay").hidden=false; };
+  function relPasso(n){
+    if(relModo==="dia"){ const d=parseYmd(relD); d.setDate(d.getDate()+n); relD=ymd(d); }
+    else if(relModo==="mes"){ relM=new Date(relM.getFullYear(), relM.getMonth()+n, 1); }
+    else relY+=n;
+    renderRel();
+  }
+  $("relPrev").onclick = ()=>relPasso(-1);
+  $("relNext").onclick = ()=>relPasso(1);
+  $("relDia").onclick = ()=>{ relModo="dia"; renderRel(); };
+  $("relMes").onclick = ()=>{ relModo="mes"; renderRel(); };
+  $("relAno").onclick = ()=>{ relModo="ano"; renderRel(); };
+  $("relFechar").onclick = ()=>{ $("relOverlay").hidden=true; };
+  $("btnDoc").onclick = ()=>{ $("docOverlay").hidden=false; $("docFechar").focus(); };
+  $("docFechar").onclick = ()=>{ $("docOverlay").hidden=true; };
+  $("docPdf").onclick = baixarDoc;
+  $("docOverlay").addEventListener("click", e=>{ if(e.target.id==="docOverlay") $("docOverlay").hidden=true; });
+  document.addEventListener("keydown", e=>{ if(e.key==="Escape" && !$("docOverlay").hidden) $("docOverlay").hidden=true; });
+  $("relCsv").onclick = ()=>baixar("csv");
+  $("relHtml").onclick = ()=>baixar("html");
+
+  // ---------- controles ----------
+  $("prev").onclick = ()=>{ mesRef=new Date(mesRef.getFullYear(),mesRef.getMonth()-1,1); renderCal(); };
+  $("next").onclick = ()=>{ mesRef=new Date(mesRef.getFullYear(),mesRef.getMonth()+1,1); renderCal(); };
+  $("hoje").onclick = ()=>selecionar(ymd(new Date()));
+  $("tabAgenda").onclick = ()=>setAba("agenda");
+  $("tabProg").onclick = ()=>setAba("prog");
+  $("tabTar").onclick = ()=>setAba("tar");
+  for(const id of ["tColab"]){ const sc=$(id); for(const c of TCOLABS){ const o=document.createElement("option"); o.textContent=c; sc.append(o); } }
+  $("btnNovaTar").onclick = ()=>abrirLinhas();
+  $("qMais").onclick = ()=>novaLinha();
+  $("qFechar").onclick = fechaLinhas;
+  $("qOk").onclick = concluirLinhas;
+  $("btnRelTar").onclick = ()=>{ rtM=new Date(); rtM.setDate(1); renderRelTar(); $("rtOverlay").hidden=false; $("rtFechar").focus(); };
+  $("rtPrev").onclick = ()=>{ rtM=new Date(rtM.getFullYear(), rtM.getMonth()-1, 1); renderRelTar(); };
+  $("rtNext").onclick = ()=>{ rtM=new Date(rtM.getFullYear(), rtM.getMonth()+1, 1); renderRelTar(); };
+  $("rtFechar").onclick = ()=>{ $("rtOverlay").hidden=true; };
+  $("rtOverlay").addEventListener("click", e=>{ if(e.target.id==="rtOverlay") $("rtOverlay").hidden=true; });
+  $("rtPdf").onclick = baixarRelTar;
+  $("btnNovaTarColab").onclick = ()=>abrirLinhas(tarColab);
+  $("tarForm").addEventListener("submit", salvaTarefa);
+  $("tarCancel").onclick = fechaTarefa;
+  $("tarOverlay").addEventListener("click", e=>{ if(e.target.id==="tarOverlay") fechaTarefa(); });
+  $("tarDelCancel").onclick = ()=>{ $("tarDelOverlay").hidden=true; tarDelId=null; };
+  $("tarDelOk").onclick = async ()=>{
+    if(!tarDelId || !db) return;
+    try{ await db.collection("tarefas").doc(tarDelId).delete(); toast("Tarefa apagada"); }
+    catch(x){ toast("Não foi possível apagar", "Verifique se sua conta pode alterar esta agenda."); }
+    $("tarDelOverlay").hidden=true; tarDelId=null;
+  };
+  document.addEventListener("keydown", e=>{ if(e.key!=="Escape") return; if(!$("tarDelOverlay").hidden){ $("tarDelOverlay").hidden=true; tarDelId=null; } else if(!$("rtOverlay").hidden){ $("rtOverlay").hidden=true; } else if(!$("tarOverlay").hidden) fechaTarefa(); });
+  $("btnNovoProg").onclick = ()=>{ setAba("agenda"); openProg(null); };
+  // as setas só andam entre anos que têm programas cadastrados
+  function anosComPrograma(){ return [...new Set(avisos.filter(a=>a.evento&&a.data).map(a=>Number(a.data.slice(0,4))))].sort((x,y)=>x-y); }
+  $("anoPrev").onclick = ()=>{ const ys=anosComPrograma().filter(y=>y<progAno); if(ys.length){ progAno=ys[ys.length-1]; progAnoAuto=false; renderProg(); } };
+  $("anoNext").onclick = ()=>{ const ys=anosComPrograma().filter(y=>y>progAno); if(ys.length){ progAno=ys[0]; progAnoAuto=false; renderProg(); } };
+  function anoPadrao(){
+    const atual=new Date().getFullYear();
+    const anos=[...new Set(avisos.filter(a=>a.evento&&a.data).map(a=>Number(a.data.slice(0,4))))].sort();
+    if(anos.includes(atual)) return atual;
+    const futuro=anos.find(y=>y>atual); return futuro || atual;
+  }
+  // "novo" vale só para esta visita: na próxima abertura, o que já foi visto deixa de ser novidade
+  const marcaVisita = ()=>store.set("agenda:lastSeen", String(Date.now()));
+  window.addEventListener("pagehide", marcaVisita);
+  document.addEventListener("visibilitychange", ()=>{ if(document.visibilityState==="hidden") marcaVisita(); });
+
+  if("Notification" in window){
+    const sino = ()=>{
+      let on=false; try{ on = Notification.permission==="granted"; }catch(e){}
+      const b=$("btnNotif"); b.hidden=false; b.classList.toggle("on", on);
+      const t = on ? "Alertas do navegador ativados" : "Alertas do navegador desativados — clique para ativar";
+      b.title=t; b.setAttribute("aria-label", t);
+      return on;
+    };
+    sino();
+    $("btnNotif").onclick = async ()=>{
+      if(sino()) return toast("Alertas do navegador já estão ativados","Para desativar, use as configurações de notificação do navegador.");
+      const falhou = ()=>{ sino(); toast("O navegador não permitiu alertas aqui","Libere as notificações nas configurações do navegador. Os avisos continuam aparecendo dentro da agenda."); };
+      try{
+        const r = await Notification.requestPermission();
+        if(r==="granted"){ sino(); toast("Alertas do navegador ativados","Você verá um aviso do Windows quando a coordenação publicar."); browserNotify("Agenda da Equipe","Alertas ativados."); }
+        else falhou();
+      }catch(e){ falhou(); }
+    };
+  }
+
+  if(!prevSeen){ lastSeen = Date.now(); }
+  marcaVisita();
+
+  render();
+
+  // ---------- conexão com o banco ----------
+  (async ()=>{
+    const timer = setTimeout(()=>{ $("status").textContent = "Não foi possível carregar a agenda ainda. Verifique a conexão; ela atualiza sozinha quando voltar."; }, 10000);
+    try{ db = window.claude && await window.claude.use("db"); }catch(e){ db=null; }
+    if(!db){ clearTimeout(timer); $("status").textContent = "A agenda só funciona aberta dentro do Claude, com login na conta do setor."; return; }
+
+    db.collection("notas").onSnapshot(s=>{
+      notas={}; for(const d of s.docs){ const v=d.data()||{}; if(v.texto) notas[d.id]=String(v.texto); }
+      renderProg();
+    }, ()=>{});
+
+    db.collection("tarefas").onSnapshot(snap=>{
+      tarefas = snap.docs.map(d=>Object.assign({id:d.id}, d.data()));
+      if(!$("rtOverlay").hidden) renderRelTar();
+      renderCal(); renderDia();
+      if(!snap.metadata.fromCache){
+        if(tarKnown===null){ tarKnown = new Set(tarefas.map(t=>t.id)); }
+        else for(const ch of snap.docChanges()){
+          if(ch.type!=="added" || tarKnown.has(ch.doc.id)) continue;
+          tarKnown.add(ch.doc.id);
+          if(mineT.has(ch.doc.id)) continue;
+          const t=ch.doc.data()||{}; alertar("Nova tarefa para "+(t.colaborador||"a equipe"),(t.inicio?"Início "+dmy(t.inicio)+" — ":"")+(t.descricao||""));
+        }
+      }
+      renderTarefas();
+    }, ()=>{});
+
+    db.collection("avisos").onSnapshot(snap=>{
+      avisos = snap.docs.map(d=>Object.assign({id:d.id}, d.data()));
+      indexaEventos();
+      if(progAnoAuto) progAno = anoPadrao();
+      if(!snap.metadata.fromCache){
+        clearTimeout(timer);
+        $("status").textContent = "Clique numa data para ver as informações. A agenda atualiza sozinha; deixe esta aba aberta para receber os avisos na hora.";
+        if(known===null){ known = new Set(avisos.map(a=>a.id)); }
+        else {
+          const novos=[];
+          for(const ch of snap.docChanges()){
+            if(ch.type!=="added" || known.has(ch.doc.id)) continue;
+            known.add(ch.doc.id);
+            if(mine.has(ch.doc.id)) continue;
+            novos.push(Object.assign({id:ch.doc.id}, ch.doc.data()));
+          }
+          if(novos.length===1){ const a=novos[0]; alertar("A coordenação incluiu uma informação", quando(a)+(a.hora?" às "+a.hora:"")+" — "+(a.evento?a.evento+": ":"")+a.titulo); }
+          else if(novos.length>1){ alertar("A coordenação incluiu "+novos.length+" informações", "Veja na Agenda e na aba Programação."); }
+        }
+      }
+      renderCal(); renderProx(); renderBanner(); renderProg();
+      renderDia(); // só redesenha a lista; o formulário aberto não é tocado
+      if(!$("relOverlay").hidden) renderRel();
+      checkLembretes();
+    }, e=>{
+      clearTimeout(timer);
+      $("status").textContent = "A conexão com a agenda caiu. Recarregue a página para reconectar.";
+    });
+  })();
+
+})();
+</script>
+
+</body></html>

@@ -1,0 +1,17 @@
+# Relatórios e exportações com dados da equipe — não versionar
+*.csv
+*.pdf
+relatorios/
+backups/
+
+# Arquivos de sistema e editores
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+*.tmp
+~$*
+
+# Segredos (por precaução)
+.env
+*.key
